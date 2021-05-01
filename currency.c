@@ -678,3 +678,109 @@ int main()
     }
 }
 // adding a pointer at end of link list
+
+struct PQueueNode
+{
+    int  n;//Vertex no.
+    int dist;
+};
+
+struct PQueue
+{
+    int size;    
+    int capacity; // No. of vertices in this particular graph
+    int *position; // To keep track of the position of vertex
+    struct PQueueNode **node; //Will point to PqueueNode
+};
+
+struct PQueueNode* newPNode(int n,int dist)
+{
+    struct PQueueNode* PNode =(struct PQueueNode*)malloc(sizeof(struct PQueueNode));
+    PNode->n = n;
+    PNode->dist = dist;
+    return PNode;
+}
+ 
+struct PQueue* createPQueue(int capacity)
+{
+    struct PQueue* pQueue =(struct PQueue*)malloc(sizeof(struct PQueue));
+    pQueue->position = (int *)malloc(capacity * sizeof(int));
+    pQueue->size = 0;
+    pQueue->capacity = capacity;
+    pQueue->node =(struct PQueueNode**)malloc(capacity *sizeof(struct PQueueNode*));
+    return pQueue;
+}
+ 
+void swapMinHeapNode(struct PQueueNode** a,struct PQueueNode** b)
+{
+    struct PQueueNode* t = *a;
+    *a = *b;
+    *b = t;
+}
+
+void minHeapify(struct PQueue* pQueue,int index)
+{
+    int smallest, left, right;
+    smallest = index;
+    left = 2 * index + 1;
+    right = 2 * index + 2;
+ 
+    if (left < pQueue->size && pQueue->node[left]->dist < pQueue->node[smallest]->dist )
+      smallest = left;
+ 
+    if (right < pQueue->size && pQueue->node[right]->dist < pQueue->node[smallest]->dist )
+      smallest = right;
+ 
+    if (smallest != index)
+    {
+        PQueueNode *smallestNode = pQueue->node[smallest];
+        PQueueNode *idxNode = pQueue->node[index];
+ 
+        pQueue->position[smallestNode->n] = index;
+        pQueue->position[idxNode->n] = smallest;
+ 
+        swapMinHeapNode(&pQueue->node[smallest],&pQueue->node[index]);
+ 
+        minHeapify(pQueue, smallest);
+    }
+}
+ 
+int isEmpty(struct PQueue* pQueue)
+{
+    return pQueue->size == 0;
+}
+ 
+struct PQueueNode* extractMin(struct PQueue*pQueue)
+{
+    if (isEmpty(pQueue))return NULL;
+ 
+    struct PQueueNode* root =pQueue->node[0];
+ 
+    struct PQueueNode* lastNode =pQueue->node[pQueue->size - 1];
+    pQueue->node[0] = lastNode;
+ 
+    pQueue->position[root->n] = pQueue->size-1;
+    pQueue->position[lastNode->n] = 0;
+ 
+    --pQueue->size;
+    minHeapify(pQueue, 0);
+ 
+    return root;
+}
+ 
+void decreaseKey(struct PQueue* pQueue,int n, int dist)
+{
+    int i = pQueue->position[n];
+
+    pQueue->node[i]->dist = dist;
+
+    while (i && pQueue->node[i]->dist <pQueue->node[(i - 1) / 2]->dist)
+    {
+        pQueue->position[pQueue->node[i]->n] =(i-1)/2;
+        pQueue->position[pQueue->node[(i-1)/2]->n] = i;
+        swapMinHeapNode(&pQueue->node[i],&pQueue->node[(i - 1) / 2]);
+ 
+        i = (i - 1) / 2;
+    }
+}
+
