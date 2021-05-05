@@ -783,4 +783,9 @@ void decreaseKey(struct PQueue* pQueue,int n, int dist)
         i = (i - 1) / 2;
     }
 }
-
+bool isMinHeap(struct PQueue *pQueue, int n)
+{
+   if (pQueue->position[n] < pQueue->size)
+     return true;
+   return false;
+}
