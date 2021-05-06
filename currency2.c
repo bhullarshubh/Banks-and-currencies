@@ -385,57 +385,6 @@ int getConv(PtrCurrFromNode P, char currfrom[],char currto[])
 
 void getList(PtrBankNode BankHead,char bankname[])
 {
-    /*
-    PtrBankNode BankTrv = findBank(BankHead,bankname);
-    int n = BankTrv->currno;
-    char index[n+1][20];
-    PtrCurrFromNode TrvCurrFrom = BankTrv->Currhead;
-    int i = 1;
-    while(TrvCurrFrom->next != NULL)
-    {
-        TrvCurrFrom = TrvCurrFrom->next;
-        strcpy(index[i],TrvCurrFrom->currname);
-        i++;
-    }
-    
-    // for(int i = 1; i <= n; i++)
-    // {
-    //     printf("%s\n",index[i]);
-    // }
-    
-    PtrList AdjList[n+1];
-    for(int i = 1; i <= n; i++)
-    {
-        AdjList[i] = InitListNode();
-        AdjList[i]->index = i;
-        PtrList TrvRow = AdjList[i];
-        for(int j = 1; j <= n; j++)
-        {
-            int conv = getConv(BankTrv->Currhead,index[i],index[j]);
-            if(conv != 0)
-            {
-                PtrList P = InitListNode();
-                P->currconv = conv;
-                P->index = j;
-                TrvRow->next = P;
-                TrvRow = P;
-            }
-        }
-    }
-    
-    for(int i = 1; i <= n; i++)
-    {
-        printf("%d -> ",AdjList[i]->index);
-        PtrList TrvRow = AdjList[i];
-        while(TrvRow->next != NULL)
-        {
-            TrvRow = TrvRow->next;
-            printf("(%d,%d) ",TrvRow->index,TrvRow->currconv);
-        }
-        printf("\n");
-    }
-    printf("\n");
-    */
     //dijkstra
 
     //code to free the list 
