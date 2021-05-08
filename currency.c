@@ -679,21 +679,21 @@ int main()
 }
 // adding a pointer at end of link list
 
-struct PQueueNode
+struct PQueueNode   //minheap nodes
 {
-    int  n;//Vertex no.
-    int dist;
+    int  n;//Vertex no. or index of vertex
+    int dist;// will store the current distance value of vertex
 };
 
 struct PQueue
 {
-    int size;    
+    int size;   // No. of heapnodes in Pqueue present,capacity  will remain same but size will decrease when minnodes will be extracted 
     int capacity; // No. of vertices in this particular graph
-    int *position; // To keep track of the position of vertex
-    struct PQueueNode **node; //Will point to PqueueNode
+    int *position; // To keep track of the position of vertex in minheap,can directly access that vertex in minheap  as its position is stored here
+    struct PQueueNode **node; //Will point to PqueueNode or minheap nodes
 };
 
-struct PQueueNode* newPNode(int n,int dist)
+struct PQueueNode* newPNode(int n,int dist)  // to create a PQueue node
 {
     struct PQueueNode* PNode =(struct PQueueNode*)malloc(sizeof(struct PQueueNode));
     PNode->n = n;
@@ -701,25 +701,25 @@ struct PQueueNode* newPNode(int n,int dist)
     return PNode;
 }
  
-struct PQueue* createPQueue(int capacity)
+struct PQueue* createPQueue(int capacity)   // To create a priority queue of capacity equal to no. of vertices
 {
     struct PQueue* pQueue =(struct PQueue*)malloc(sizeof(struct PQueue));
-    pQueue->position = (int *)malloc(capacity * sizeof(int));
-    pQueue->size = 0;
-    pQueue->capacity = capacity;
+    pQueue->position = (int *)malloc(capacity * sizeof(int));  // position array's size would be no. of vertices as it keeps track of position of vertices in pqueue
+    pQueue->size = 0;  //initially size is 0 as no minheap node is created
+    pQueue->capacity = capacity;  //capacity is fixed,always equal to no. of vertices
     pQueue->node =(struct PQueueNode**)malloc(capacity *sizeof(struct PQueueNode*));
     return pQueue;
 }
  
-void swapMinHeapNode(struct PQueueNode** a,struct PQueueNode** b)
+void swapMinHeapNode(struct PQueueNode** a,struct PQueueNode** b)  //swap 2 pqueue nodes,would be required as during heapify swapping is must
 {
     struct PQueueNode* t = *a;
     *a = *b;
     *b = t;
 }
 
-void minHeapify(struct PQueue* pQueue,int index)
-{
+void minHeapify(struct PQueue* pQueue,int index) // heapify process is there to make PQueue follow the minheap condition
+{                                                // that every node is smaller than its children
     int smallest, left, right;
     smallest = index;
     left = 2 * index + 1;
