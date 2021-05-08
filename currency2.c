@@ -1,19 +1,17 @@
 #include "currency2.h"
 
-PtrBankNode InitBankNode()
+PtrBankNode InitBankNode() //initializes a BankNode 
 {
     PtrBankNode P = (PtrBankNode)malloc(sizeof(BankNode));
     P->currno = 0;
     P->Currhead = NULL;
-    PtrCurrFromNode Temp = (PtrCurrFromNode)malloc(sizeof(CurrFromNode));
-    Temp->FirstCurrTo = NULL;
-    Temp->next = NULL;
+    PtrCurrFromNode Temp = InitCurrFromNode(); //initializes the Currhead node in the bank that the user is adding
     P->Currhead = Temp;
     P->next = NULL;
     return P;
 }
 
-PtrCurrFromNode InitCurrFromNode()
+PtrCurrFromNode InitCurrFromNode() //initializes a CurrFromNode
 {
     PtrCurrFromNode P = (PtrCurrFromNode)malloc(sizeof(CurrFromNode));
     P->FirstCurrTo = NULL;
@@ -21,7 +19,7 @@ PtrCurrFromNode InitCurrFromNode()
     return P;
 }
 
-PtrCurrToNode InitCurrToNode()
+PtrCurrToNode InitCurrToNode() //initializes a CurrToNode
 {
     PtrCurrToNode P = (PtrCurrToNode)malloc(sizeof(CurrToNode));
     P->currconv = 0;
@@ -29,16 +27,16 @@ PtrCurrToNode InitCurrToNode()
     return P;
 }
 
-PtrList InitListNode()
+PtrListNode InitListNode() //initializes a ListNode
 {
-    PtrList P = (PtrList)malloc(sizeof(List));
+    PtrListNode P = (PtrListNode)malloc(sizeof(ListNode));
     P->index = 0;
     P->currconv = 0;
     P->next = 0;
     return P;
 }
 
-PtrBankNode findBank(PtrBankNode BankHead, char bankname[])
+PtrBankNode findBank(PtrBankNode BankHead, char bankname[]) //given the name of the bank we want to find as an argument, this function returns a pointer to the BankNode with that name
 {
     PtrBankNode BankTrv = BankHead;
     while ((strcmp(BankTrv->bankname, bankname) != 0) && BankTrv->next != NULL)
@@ -48,7 +46,7 @@ PtrBankNode findBank(PtrBankNode BankHead, char bankname[])
     return BankTrv;
 }
 
-PtrCurrFromNode findCurrFromNode(PtrCurrFromNode TrvCurrFrom, char currname[])
+PtrCurrFromNode findCurrFromNode(PtrCurrFromNode TrvCurrFrom, char currname[]) //given the name of the currency the user wants to find as argument, this function returns a pointer to the CurrFromNode with that name
 {
     while (TrvCurrFrom->next != NULL)
     {
@@ -60,20 +58,71 @@ PtrCurrFromNode findCurrFromNode(PtrCurrFromNode TrvCurrFrom, char currname[])
     }
 }
 
-PtrCurrToNode findCurrToNode(PtrCurrFromNode TrvCurrFrom, char currname[])
+PtrCurrToNode findCurrToNode(PtrCurrFromNode TrvCurrFrom, char currname[]) // given the name of the currency the user wants to find as argument, this function returns a pointer to the CurrToNode with that name
 {
-    PtrCurrToNode P = TrvCurrFrom->FirstCurrTo;
-    while (strcmp(P->currname, currname) != 0)
+    PtrCurrToNode TrvCurrTo = TrvCurrFrom->FirstCurrTo;
+    while (strcmp(TrvCurrTo->currname, currname) != 0)
     {
-        P = P->next;
+        TrvCurrTo = TrvCurrTo->next;
     }
-    return P;
+    return TrvCurrTo;
 }
 
-bool BankDoesntExist(PtrBankNode BankHead, char bankname[], int mode)
+PtrCurrFromNode addCurrFromNode(PtrCurrFromNode CurrHead, char currname[]) // Adds a CurrFromNode at the end of the link list of CurrFromNodes, with its name as the string passed as an argument
+{
+    while (CurrHead->next != NULL)
+    {
+        CurrHead = CurrHead->next;
+    }
+    PtrCurrFromNode Temp = InitCurrFromNode();
+    strcpy(Temp->currname, currname); 
+    CurrHead->next = Temp; 
+    return Temp;
+}
+
+PtrPQueueNode newPNode(int n, int dist) // to create a PQueue node
+{
+    PtrPQueueNode PNode = (PtrPQueueNode )malloc(sizeof(PQueueNode));
+    PNode->n = n;
+    PNode->dist = dist;
+    return PNode;
+}
+
+PtrPQueue createPQueue(int capacity) // To create a priority queue of capacity equal to no. of vertices
+{
+    PtrPQueue pQueue = (PtrPQueue )malloc(sizeof(struct PQueue));
+    pQueue->position = (int *)malloc(capacity * sizeof(int)); // position array's size would be no. of vertices as it keeps track of position of vertices in pqueue
+    pQueue->size = 0;                                         //initially size is 0 as no minheap node is created
+    pQueue->capacity = capacity;                              //capacity is fixed,always equal to no. of vertices
+    pQueue->node = (PtrPtrPQueueNode)malloc(capacity * sizeof(PtrPQueueNode ));
+    return pQueue;
+}
+
+PtrPQueueNode extractMin(PtrPQueue pQueue) // to extarct minimum node from pqueue which would be first node
+{
+    if (isEmpty(pQueue))
+        return NULL;
+
+    PtrPQueueNode root = pQueue->node[0]; // store the first node in root node and do operations on it
+
+    PtrPQueueNode lastNode = pQueue->node[pQueue->size - 1]; //here root node is replaced with last node
+    pQueue->node[0] = lastNode;
+
+    pQueue->position[root->n] = pQueue->size - 1; // positions are updated in array for above replacement
+    pQueue->position[lastNode->n] = 0;
+
+    --pQueue->size;        // size is decreased by one as one node is extracted,capacity or size of array will remain same
+    minHeapify(pQueue, 0); // heapify the root to make sure minheap condition is followed
+
+    return root;
+}
+
+// ALL BOOL FUNCTIONS HAVE A MODE PARAMETER, where if the mode if 1, the functions prints the error message, or else it doesn't print anything
+
+bool BankDoesntExist(PtrBankNode BankHead, char bankname[], int mode) //to check if a bank with the given name exists in the link list of BankNodes
 {
     PtrBankNode BankTrv = BankHead;
-    while (BankTrv->next != NULL)
+    while (BankTrv->next != NULL) //moves through link list of BankNodes and performs strcmps to check whether the name of the BankNode matches with the string bankname passed as argument
     {
         BankTrv = BankTrv->next;
         if (strcmp(BankTrv->bankname, bankname) == 0)
@@ -89,7 +138,7 @@ bool BankDoesntExist(PtrBankNode BankHead, char bankname[], int mode)
     return 1;
 }
 
-bool NoBanksExist(PtrBankNode BankHead, int mode)
+bool NoBanksExist(PtrBankNode BankHead, int mode) //returns 0 if no banks exist, else returns 1
 {
     PtrBankNode BankTrv = BankHead;
     if (BankTrv->next == NULL)
@@ -103,7 +152,7 @@ bool NoBanksExist(PtrBankNode BankHead, int mode)
     return 0;
 }
 
-bool CurrencyAlreadyPresent(PtrCurrFromNode TrvCurrFrom, char currname[], int mode)
+bool CurrencyAlreadyPresent(PtrCurrFromNode TrvCurrFrom, char currname[], int mode) //takes a string as argument and returns 1 if a CurrFromNode has same name as that string, else returns 0
 {
     while (TrvCurrFrom->next != NULL)
     {
@@ -120,7 +169,7 @@ bool CurrencyAlreadyPresent(PtrCurrFromNode TrvCurrFrom, char currname[], int mo
     return 0;
 }
 
-bool NoCurrencyExists(PtrBankNode BankHead, char bankname[], int mode)
+bool NoCurrencyExists(PtrBankNode BankHead, char bankname[], int mode) //returns 1 if no currencies have been added to a bank, else returns 0
 {
     PtrBankNode BankTrv = findBank(BankHead, bankname);
     if (BankTrv->currno == 0)
@@ -134,7 +183,16 @@ bool NoCurrencyExists(PtrBankNode BankHead, char bankname[], int mode)
     return 0;
 }
 
-void addBank(PtrBankNode BankHead, char bankname[])
+bool IsInPqueue(PtrPQueue PQueue, int n) // to check whether vertex n is priority queue or not
+{
+    if (PQueue->position[n] < PQueue->size) // if it is not there then it would be outside the current size of priority queue
+    {
+        return true;
+    }
+    return false;
+}
+
+void addBank(PtrBankNode BankHead, char bankname[]) //adds a BankNode to the link list of BankNodes
 {
     PtrBankNode BankTrv = findBank(BankHead, " ");
     PtrBankNode Temp = InitBankNode();
@@ -144,33 +202,26 @@ void addBank(PtrBankNode BankHead, char bankname[])
     printf("\nAdded bank %s\n\n", bankname);
 }
 
-void printBanks(PtrBankNode BankHead)
+void printBanks(PtrBankNode BankHead) //prints list of BankNodes
 {
     printf("\n");
     PtrBankNode BankTrv = BankHead->next;
     while (BankTrv != NULL)
     {
-        printf("%s ", BankTrv->bankname);
+        printf("%s", BankTrv->bankname);
+        if(BankTrv->next != NULL)// to prevent function from printing a comma after the last bank name has been printed
+        {
+            printf(", ");
+        }
         BankTrv = BankTrv->next;
     }
     printf("\n\n");
 }
 
-PtrCurrFromNode addCurrFromNode(PtrCurrFromNode CurrHead, char currname[])
-{
-    while (CurrHead->next != NULL)
-    {
-        CurrHead = CurrHead->next;
-    }
-    PtrCurrFromNode Temp = InitCurrFromNode();
-    strcpy(Temp->currname, currname);
-    CurrHead->next = Temp;
-    return Temp;
-}
 
-void addCurrToNode(PtrCurrFromNode TrvCurrFrom, char currname[])
+void addCurrToNode(PtrCurrFromNode TrvCurrFrom, char currname[]) // adding a CurrToNode at the end of list of CurrToNodes
 {
-    if (TrvCurrFrom->FirstCurrTo == NULL)
+    if (TrvCurrFrom->FirstCurrTo == NULL) // case where the pointer to the CurrFromNode that is given as argument has no CurrToNodes linked to it
     {
         PtrCurrToNode temp = InitCurrToNode();
         strcpy(temp->currname, currname);
@@ -189,41 +240,42 @@ void addCurrToNode(PtrCurrFromNode TrvCurrFrom, char currname[])
     }
 }
 
-void addCurr(PtrBankNode BankHead, char bankname[], char currname[])
+void addCurr(PtrBankNode BankHead, char bankname[], char currname[]) // adds a CurrFromNode to a bank
 {
-    PtrBankNode BankTrv = findBank(BankHead, bankname);
-    PtrCurrFromNode TrvCurrFrom = BankTrv->Currhead;
+    PtrBankNode BankTrv = findBank(BankHead, bankname); // stores the pointer to the bank in which we need to add the currency
+    PtrCurrFromNode TrvCurrFrom = BankTrv->Currhead; // Traversal pointer which moves through the link list of CurrFromNodes
     if (!CurrencyAlreadyPresent(TrvCurrFrom, currname, 1))
     {
-        PtrCurrFromNode NewCurr = addCurrFromNode(BankTrv->Currhead, currname);
+        PtrCurrFromNode NewCurr = addCurrFromNode(BankTrv->Currhead, currname); //adds a CurrFromNode at the end of link list of CurrFromNodes
         while (TrvCurrFrom->next != NewCurr)
         {
             TrvCurrFrom = TrvCurrFrom->next;
-            addCurrToNode(TrvCurrFrom, currname);
-            addCurrToNode(NewCurr, TrvCurrFrom->currname);
+            addCurrToNode(TrvCurrFrom, currname); //adding a CurrToNode at the end of every link list of CurrFromNodes where TrvCurrFrom is pointing to the head pointer of these lists
+            addCurrToNode(NewCurr, TrvCurrFrom->currname); //adds a CurrToNode at the end of link list of CurrToNodes with NewCurr being the head pointer
         }
         addCurrToNode(NewCurr, currname);
         (BankTrv->currno)++;
         printf("\nAdded currency %s to bank %s\n\n", currname, bankname);
-    }
+    }   
 }
 
-void printAllCurr(PtrBankNode BankHead, char bankname[])
+void printAllCurr(PtrBankNode BankHead, char bankname[]) //prints the adjacency matrix for a given bank
 {
     printf("\n\n");
     PtrBankNode BankTrv = findBank(BankHead, bankname);
 
     PtrCurrFromNode TrvCurrFrom = BankTrv->Currhead;
     printf("\t\t");
-    while (TrvCurrFrom->next != NULL)
+    //Together these two while loops print the adjacency matrix
+    while (TrvCurrFrom->next != NULL)//while loop to print the heading of each column
     {
         TrvCurrFrom = TrvCurrFrom->next;
-        PtrCurrToNode Q = TrvCurrFrom->FirstCurrTo;
         printf("%s\t\t", TrvCurrFrom->currname);
     }
+    
     printf("\n\n");
     TrvCurrFrom = BankTrv->Currhead;
-    while (TrvCurrFrom->next != NULL)
+    while (TrvCurrFrom->next != NULL) //prints heading of each row and currconv stored in each CurrToNode
     {
         TrvCurrFrom = TrvCurrFrom->next;
         PtrCurrToNode TrailCurrFrom = TrvCurrFrom->FirstCurrTo;
@@ -237,11 +289,13 @@ void printAllCurr(PtrBankNode BankHead, char bankname[])
     }
 }
 
-void delCurr(PtrBankNode BankHead, char currname[], char bankname[], int mode)
+void delCurr(PtrBankNode BankHead, char currname[], char bankname[], int mode) //deletes a currency from the adjacency matrix of a bank
 {
+    // To delete a currency from the adjaceny matrix, we need to delete the link list of CurrToNodes which has its head pointer's name as the name of the currency the user wants to delete
+    // Then it deletes a node from every other link list of CurrToNodes that has its currname as the string passed as argument
     PtrBankNode BankTrv = findBank(BankHead, bankname);
     PtrCurrFromNode TrvCurrFrom = BankTrv->Currhead;
-    if (!CurrencyAlreadyPresent(TrvCurrFrom, currname, 0))
+    if (!CurrencyAlreadyPresent(TrvCurrFrom, currname, 0)) //if the no currency name in the bank matches with the string given as input, the function prints an error
     {
         if (mode == 1)
         {
@@ -250,33 +304,33 @@ void delCurr(PtrBankNode BankHead, char currname[], char bankname[], int mode)
     }
     else
     {
-        PtrCurrFromNode Temp2 = findCurrFromNode(TrvCurrFrom, currname);
+        PtrCurrFromNode Temp2 = findCurrFromNode(TrvCurrFrom, currname); //Temp2 stores the head pointer of the link list that needs to be deleted
         PtrCurrFromNode Temp = BankTrv->Currhead;
-        while (Temp->next != Temp2)
+        while (Temp->next != Temp2) // Temp will point to the CurrFromNode right before Temp2
         {
             Temp = Temp->next;
         }
         (BankTrv->currno)--;
 
-        if (Temp2 == BankTrv->Currhead->next)
+        if (Temp2 == BankTrv->Currhead->next) //if Temp2 is pointing to the first currency in the adjacency matrix (top left corner case)
         {
             PtrCurrFromNode TrvTemp = Temp2;
-            while (TrvTemp->next != NULL)
+            while (TrvTemp->next != NULL) //deleting the first CurrToNode of every link list of CurrToNode
             {
                 TrvTemp = TrvTemp->next;
                 PtrCurrToNode TrvRowTemp = TrvTemp->FirstCurrTo;
                 TrvTemp->FirstCurrTo = TrvRowTemp->next;
                 free(TrvRowTemp);
             }
-            PtrCurrToNode RowTemp = Temp2->FirstCurrTo;
-            while (RowTemp->next != NULL)
+            PtrCurrToNode RowTemp = Temp2->FirstCurrTo; // pointing to the first CurrToNode of the list of CurrToNodes that needs to be completely deleted
+            while (RowTemp->next != NULL) //deleting entire list of CurrToNodes
             {
                 PtrCurrToNode Temp3 = RowTemp->next;
                 RowTemp->next = Temp3->next;
-                free(Temp3);
+                free(Temp3); 
             }
             BankTrv->Currhead->next = Temp2->next;
-            free(Temp2);
+            free(Temp2); //deleting CurrFromNode from link list of CurrFromNodes
             printf("\nDeleted currency %s from bank %s\n\n", currname, bankname);
         }
         else
@@ -287,7 +341,7 @@ void delCurr(PtrBankNode BankHead, char currname[], char bankname[], int mode)
                 TrvCurrFrom = TrvCurrFrom->next;
                 PtrCurrToNode RowTemp = TrvCurrFrom->FirstCurrTo;
                 PtrCurrToNode TrailRowTemp = RowTemp;
-                while (strcmp(RowTemp->currname, currname) != 0)
+                while (strcmp(RowTemp->currname, currname) != 0) //finding and deleting CurrToNodes that have same currname as the currency that needs to be deleted
                 {
                     TrailRowTemp = RowTemp;
                     RowTemp = RowTemp->next;
@@ -297,26 +351,26 @@ void delCurr(PtrBankNode BankHead, char currname[], char bankname[], int mode)
             }
             PtrCurrToNode S = Temp2->FirstCurrTo;
             Temp->next = Temp2->next;
-            while (S->next != NULL)
+            while (S->next != NULL) //deleting entire list of CurrToNodes
             {
                 PtrCurrToNode Temp4 = S->next;
                 S->next = Temp4->next;
                 free(Temp4);
             }
-            free(Temp2);
+            free(Temp2); //deleting CurrFromNode from link list of CurrFromNodes
             printf("\nDeleted currency %s from bank %s\n\n", currname, bankname);
         }
     }
 }
 
-void findLoc(PtrCurrFromNode P, char currfrom[], char currto[], float currconv)
+void findLoc(PtrCurrFromNode P, char currfrom[], char currto[], float currconv) //adds conversion rate at specified location in the adjacency matrix
 {
     P = findCurrFromNode(P, currfrom);
     PtrCurrToNode Q = findCurrToNode(P, currto);
     Q->currconv = currconv;
 }
 
-void addConv(PtrBankNode BankHead, char currfrom[], char currto[], float currconv, char bankname[], int mode)
+void addConv(PtrBankNode BankHead, char currfrom[], char currto[], float currconv, char bankname[], int mode) //checks for errors and if none then calls findLoc and adds conversion rate to adjacency matrix
 {
     PtrBankNode BankTrv = findBank(BankHead, bankname);
     if (CurrencyAlreadyPresent(BankTrv->Currhead, currfrom, 0))
@@ -331,7 +385,6 @@ void addConv(PtrBankNode BankHead, char currfrom[], char currto[], float currcon
             {
                 PtrCurrFromNode TrvCurrFrom = BankTrv->Currhead;
                 findLoc(TrvCurrFrom, currfrom, currto, currconv);
-                //findLoc(TrvCurrFrom,currto,currfrom,currconv);
                 if (mode == 1)
                 {
                     printf("\nAdded conversion %s to %s to bank %s\n\n", currfrom, currto, bankname);
@@ -353,7 +406,7 @@ void addConv(PtrBankNode BankHead, char currfrom[], char currto[], float currcon
     }
 }
 
-void delBank(PtrBankNode BankHead, char bankname[])
+void delBank(PtrBankNode BankHead, char bankname[]) // deletes BankNode from list of BankNodes and deletes the adjaceny matrix of this bank if it exists
 {
     PtrBankNode BankTrv = findBank(BankHead, bankname);
     PtrBankNode BankTrvPrev = BankHead;
@@ -375,38 +428,14 @@ void delBank(PtrBankNode BankHead, char bankname[])
     printf("\nDeleted bank %s\n\n", bankname);
 }
 
-int getConv(PtrCurrFromNode P, char currfrom[], char currto[])
+void swapMinHeapNode(PtrPtrPQueueNode a,PtrPtrPQueueNode b) //swap 2 pqueue nodes,would be required as during heapify swapping is must
 {
-    P = findCurrFromNode(P, currfrom);
-    PtrCurrToNode Q = findCurrToNode(P, currto);
-    return Q->currconv;
-}
-struct PQueueNode *newPNode(int n, int dist) // to create a PQueue node
-{
-    struct PQueueNode *PNode = (struct PQueueNode *)malloc(sizeof(struct PQueueNode));
-    PNode->n = n;
-    PNode->dist = dist;
-    return PNode;
-}
-
-struct PQueue *createPQueue(int capacity) // To create a priority queue of capacity equal to no. of vertices
-{
-    struct PQueue *pQueue = (struct PQueue *)malloc(sizeof(struct PQueue));
-    pQueue->position = (int *)malloc(capacity * sizeof(int)); // position array's size would be no. of vertices as it keeps track of position of vertices in pqueue
-    pQueue->size = 0;                                         //initially size is 0 as no minheap node is created
-    pQueue->capacity = capacity;                              //capacity is fixed,always equal to no. of vertices
-    pQueue->node = (struct PQueueNode **)malloc(capacity * sizeof(struct PQueueNode *));
-    return pQueue;
-}
-
-void swapMinHeapNode(struct PQueueNode **a, struct PQueueNode **b) //swap 2 pqueue nodes,would be required as during heapify swapping is must
-{
-    struct PQueueNode *t = *a;
+    PtrPQueueNode t = *a;
     *a = *b;
     *b = t;
 }
 
-void minHeapify(struct PQueue *pQueue, int index) // heapify process is there to make PQueue follow the minheap condition
+void minHeapify(PtrPQueue pQueue, int index) // heapify process is there to make PQueue follow the minheap condition
 {                                                 // that every node is smaller than its children
     int smallest, left, right;                    // Here in this function we will also swap nodes and change their position in  position array
     smallest = index;
@@ -421,8 +450,8 @@ void minHeapify(struct PQueue *pQueue, int index) // heapify process is there to
 
     if (smallest != index)
     {
-        struct PQueueNode *smallestNode = pQueue->node[smallest]; // Nodes which are neded to be swapped in minheap
-        struct PQueueNode *idxNode = pQueue->node[index];         // so that condition of minheap is followed
+        PtrPQueueNode smallestNode = pQueue->node[smallest]; // Nodes which are neded to be swapped in minheap
+        PtrPQueueNode idxNode = pQueue->node[index];         // so that condition of minheap is followed
 
         pQueue->position[smallestNode->n] = index; // here positions of nodes are changed
         pQueue->position[idxNode->n] = smallest;   // which would be swapped
@@ -433,31 +462,7 @@ void minHeapify(struct PQueue *pQueue, int index) // heapify process is there to
     }
 }
 
-int isEmpty(struct PQueue *pQueue) //to check if PQueue is empty or not
-{
-    return pQueue->size == 0; // if size is 0 that means there are no minheap nodes in our priority queue.
-}
-
-struct PQueueNode *extractMin(struct PQueue *pQueue) // to extarct minimum node from pqueue which would be first node
-{
-    if (isEmpty(pQueue))
-        return NULL;
-
-    struct PQueueNode *root = pQueue->node[0]; // store the first node in root node and do operations on it
-
-    struct PQueueNode *lastNode = pQueue->node[pQueue->size - 1]; //here root node is replaced with last node
-    pQueue->node[0] = lastNode;
-
-    pQueue->position[root->n] = pQueue->size - 1; // positions are updated in array for above replacement
-    pQueue->position[lastNode->n] = 0;
-
-    --pQueue->size;        // size is decreased by one as one node is extracted,capacity or size of array will remain same
-    minHeapify(pQueue, 0); // heapify the root to make sure minheap condition is followed
-
-    return root;
-}
-
-void decreaseKey(struct PQueue *pQueue, int n, int dist) // function to update the distance value(decrease distance particullarly) in heap nodes
+void decreaseKey(PtrPQueue pQueue, int n, int dist) // function to update the distance value(decrease distance particullarly) in heap nodes
 {
     int i = pQueue->position[n]; // here position array is used to get the position of particular vertex in minheap directly
 
@@ -472,11 +477,39 @@ void decreaseKey(struct PQueue *pQueue, int n, int dist) // function to update t
         i = (i - 1) / 2; ///go to next parent
     }
 }
-bool IsInPqueue(struct PQueue *pQueue, int n) // to check whether vertex n is priority queue or not
+
+void bestConv(PtrBankNode BankHead,char currfrom[],char currto[])
 {
-    if (pQueue->position[n] < pQueue->size) // if it is not there then it would be outside the current size of priority queue
-        return true;
-    return false;
+    PtrBankNode BankTrv = BankHead;
+    int bankno = BankHead->currno;
+    store bank[bankno];
+    int i = 0;
+    bool error = 1;
+    while (BankTrv->next != NULL)
+    {
+        BankTrv = BankTrv->next;
+        if(CurrencyAlreadyPresent(BankTrv->Currhead,currfrom,0) && CurrencyAlreadyPresent(BankTrv->Currhead,currto,0))
+        {
+            error = 0;
+            bank[i].cost = getList(BankHead, currfrom, currto, BankTrv->bankname);
+            
+        }
+        else
+        {
+            bank[i].cost = max;
+        }
+        strcpy(bank[i].bankname, BankTrv->bankname);
+        i++;
+    }
+    if(error == 1)
+    {
+        printf("\nError: No bank with conversion from %s to %s exists\n\n",currfrom,currto);
+    }
+    else
+    {
+        qsort(bank,bankno,sizeof(store),cmpfunc);
+        printf("\nThe best conversion rate from %s to %s exists in bank %s with conversion rate %d\n\n",currfrom,currto,bank[0].bankname,bank[0].cost);
+    }
 }
 
 int getList(PtrBankNode BankHead, char currfrom[], char currto[], char bankname[])
@@ -517,18 +550,18 @@ int getList(PtrBankNode BankHead, char currfrom[], char currto[], char bankname[
         }
     }
 
-    PtrList AdjList[n];
+    PtrListNode AdjList[n];
     for (int i = 0; i < n; i++)
     {
         AdjList[i] = InitListNode();
         AdjList[i]->index = i;
-        PtrList TrvRow = AdjList[i];
+        PtrListNode TrvRow = AdjList[i];
         for (int j = 0; j < n; j++)
         {
             int conv = getConv(BankTrv->Currhead, index[i], index[j]);
             if (conv != 0)
             {
-                PtrList P = InitListNode();
+                PtrListNode P = InitListNode();
                 P->currconv = conv;
                 P->index = j;
                 TrvRow->next = P;
@@ -539,7 +572,7 @@ int getList(PtrBankNode BankHead, char currfrom[], char currto[], char bankname[
     for (int i = 0; i < n; i++)
     {
         printf("%d -> ", AdjList[i]->index);
-        PtrList TrvRow = AdjList[i];
+        PtrListNode TrvRow = AdjList[i];
         while (TrvRow->next != NULL)
         {
             TrvRow = TrvRow->next;
@@ -554,7 +587,7 @@ int getList(PtrBankNode BankHead, char currfrom[], char currto[], char bankname[
     int distance[v]; // distance array;
     //calling priority queue to make the algo more efficient
 
-    struct PQueue *pq = createPQueue(v);
+    PtrPQueue pq = createPQueue(v);
 
     for (int i = 0; i <= v; i++)
     {
@@ -569,13 +602,11 @@ int getList(PtrBankNode BankHead, char currfrom[], char currto[], char bankname[
     decreaseKey(pq, source, distance[source]);
     while (!isEmpty(pq))
     {
-        struct PQueueNode *pqnode;
+        PtrPQueueNode pqnode;
         pqnode = extractMin(pq);
         int x;
         x = pqnode->n;
-        // List *update;
-        // update = g->list[x].head;
-        PtrList P = AdjList[x]->next;
+        PtrListNode P = AdjList[x]->next;
         while (P != NULL)
         {
             int y;
@@ -593,7 +624,19 @@ int getList(PtrBankNode BankHead, char currfrom[], char currto[], char bankname[
 
 int cmpfunc(const void *p, const void *q)
 {
-    struct store *u = (struct store *)p;
-    struct store *v = (struct store *)q;
+    Ptrstore u = (Ptrstore)p;
+    Ptrstore v = (Ptrstore)q;
     return (u->cost - v->cost);
+}
+
+int getConv(PtrCurrFromNode P, char currfrom[], char currto[]) //returns conversion rate for conversion between 2 currencies
+{
+    P = findCurrFromNode(P, currfrom);
+    PtrCurrToNode Q = findCurrToNode(P, currto);
+    return Q->currconv;
+}
+
+int isEmpty(PtrPQueue pQueue) //to check if PQueue is empty or not
+{
+    return pQueue->size == 0; // if size is 0 that means there are no minheap nodes in our priority queue.
 }

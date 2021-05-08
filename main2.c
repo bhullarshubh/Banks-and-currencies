@@ -2,6 +2,7 @@
 
 int main()
 {
+    printf("type 'commands' to see list of commands\n");
     PtrBankNode BankHead = InitBankNode();
     char command[20];
     printf("> ");
@@ -93,29 +94,23 @@ int main()
         }
         else if (strcmp(command, "bestConv") == 0)
         {
-
             char currfrom[20];
             char currto[20];
             scanf("%s", currfrom);
             scanf("%s", currto);
-            /* char bankname[20];
-            scanf("%s",bankname); */
-            PtrBankNode BankTrv = BankHead;
-            int bankno = BankHead -> currno;
-            store bank[bankno];
-            int i = 0;
-            while (BankTrv->next != NULL)
-            {
-                BankTrv = BankTrv->next;
-                bank[i].cost = getList(BankHead, currfrom, currto, BankTrv->bankname);
-                strcpy(bank[i].bankname, BankTrv->bankname);
-                i++;
-            }
-            qsort(bank,bankno,sizeof(store),cmpfunc);
-            printf("\nThe best conversion rate from %s to %s exists in bank %s with conversion rate %d\n\n",currfrom,currto,bank[0].bankname,bank[0].cost);
+            bestConv(BankHead,currfrom,currto);
         }
         else if (strcmp(command, "commands") == 0)
         {
+            printf("\naddBank bankname\n");
+            printf("printBank\n");
+            printf("delBank bankname\\n");
+            printf("addCurr currname bankname\n");
+            printf("printAllCurr bankname\n");
+            printf("delCurr currname bankname\n");
+            printf("addConv currfrom currto currconv bankname\n");
+            printf("delConv currfrom currto bankname\n");
+            printf("bestConv currfrom currto\n\n");
         }
         else
         {
@@ -124,4 +119,5 @@ int main()
         printf("> ");
         scanf("%s", command);
     }
+    printf("\n");
 }

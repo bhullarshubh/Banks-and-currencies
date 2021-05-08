@@ -13,10 +13,8 @@ addCurr yen ghi
 addConv dollar pound 2 abc
 addConv dollar pound 5 def
 addConv dollar pound 6 ghi
-addConv pound  yen 8 abc
 addConv pound yen 5 def
 addConv pound yen 1 ghi
-addConv dollar yen 5 abc
 addConv dollar yen 12 def
 addConv dollar yen 7 ghi
 bestConv dollar yen
