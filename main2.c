@@ -93,11 +93,16 @@ int main()
                 addConv(BankHead,currfrom,currto,0,bankname,0);
             }
         }
-        else if (strcmp(command, "getList") == 0)
+        else if (strcmp(command, "bestConv") == 0)
         {
+           
+            char currfrom[20];
+            char currto[20];
+            scanf("%s",currfrom);
+            scanf("%s",currto);
             char bankname[20];
             scanf("%s",bankname);
-            getList(BankHead,bankname);
+            getList(BankHead,currfrom,currto,bankname);
         }
         else if (strcmp(command, "commands") == 0)
         {

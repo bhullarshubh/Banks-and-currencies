@@ -57,7 +57,8 @@ int main()
     int n;
     // n = no of banks;
     p = ptrtobank;
-    int ans[n] for (int i = 1; i < n + 1; i++)
+    int ans[n];
+    for (int i = 1; i < n + 1; i++)
     {
 
         int ans[i] = dijkstra(p, source, dest);
