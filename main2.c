@@ -102,19 +102,16 @@ int main()
         }
         else if (strcmp(command, "commands") == 0)
         {
-            printf("\naddBank bankname\n");
-            printf("printBank\n");
-            printf("delBank bankname\\n");
-            printf("addCurr currname bankname\n");
-            printf("printAllCurr bankname\n");
-            printf("delCurr currname bankname\n");
-            printf("addConv currfrom currto currconv bankname\n");
-            printf("delConv currfrom currto bankname\n");
-            printf("bestConv currfrom currto\n\n");
-        }
-        else
-        {
-            printf("Syntax Error\n");
+            printf("\n1. addBank bankname\n");
+            printf("2. printBank\n");
+            printf("3. delBank bankname\\n");
+            printf("4. addCurr currname bankname\n");
+            printf("5. printAllCurr bankname\n");
+            printf("6. delCurr currname bankname\n");
+            printf("7. addConv currfrom currto currconv bankname\n");
+            printf("8. delConv currfrom currto bankname\n");
+            printf("9. bestConv currfrom currto\n");
+            printf("10. findCycle bankname\n\n");
         }
         else if (strcmp(command, "findCycle") == 0)
         {
@@ -130,6 +127,11 @@ int main()
                 printf("\nNo cycles exist in bank %s\n", bankname);
             }
         }
+        else
+        {
+            printf("Syntax Error\n");
+        }
+       
         printf("> ");
         scanf("%s", command);
     }

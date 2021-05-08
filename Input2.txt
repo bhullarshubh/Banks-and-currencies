@@ -1,0 +1,10 @@
+addBank A 
+addCurr i A
+addCurr j A
+addCurr k A
+addConv i j 1 A 
+addConv j k 1 A 
+addConv k i 1 A 
+bestConv k i A 
+findCycle A 
+exit

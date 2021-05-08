@@ -125,4 +125,4 @@ int isEmpty(struct PQueue *pQueue);
 int getConv(PtrCurrFromNode P, char currfrom[], char currto[]);
 int getList(PtrBankNode BankHead, char currfrom[], char currto[], char bankname[]);
 bool cycle(PtrBankNode BankHead,char bankname[]);
-bool iscycle(PtrList P,bool visited[],bool stack[],PtrList AdjList[]);
+bool iscycle(PtrListNode P,bool visited[],bool stack[],PtrListNode AdjList[]);
