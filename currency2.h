@@ -73,7 +73,7 @@ void delCurr(PtrBankNode BankHead, char currname[],char bankname[],int mode);
 void findLoc(PtrCurrFromNode P, char currfrom[],char currto[],float currconv);
 void addConv(PtrBankNode BankHead,char currfrom[],char currto[],float currconv, char bankname[], int mode);
 void delBank(PtrBankNode BankHead,char bankname[]);
-void getList(PtrBankNode BankHead,char currfrom[],char currto[],char bankname[]);
+int getList(PtrBankNode BankHead,char currfrom[],char currto[],char bankname[]);
 
 int getConv(PtrCurrFromNode P, char currfrom[],char currto[]);
 
@@ -92,4 +92,9 @@ struct PQueue
     struct PQueueNode **node; //Will point to PqueueNode or minheap nodes
 };
 
-
+struct store
+{
+    int cost;
+    char bankname[20];
+};
+typedef struct store store;
