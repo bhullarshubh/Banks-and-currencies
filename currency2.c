@@ -640,3 +640,83 @@ int isEmpty(PtrPQueue pQueue) //to check if PQueue is empty or not
 {
     return pQueue->size == 0; // if size is 0 that means there are no minheap nodes in our priority queue.
 }
+bool iscycle(PtrList P, bool visited[], bool stack[],PtrList AdjList[])
+{   PtrList T = P;
+    if (visited[T->index] == false)
+    {
+        visited[T->index] = true;
+        stack[T->index] = true;
+        P = AdjList[P -> index];
+        while (P->next != NULL)
+        {
+            P = P->next;
+           // printf("%d\n", P->index);
+            if (!visited[P ->index] && iscycle(P, visited, stack,AdjList))
+            {
+                //printf(" Go %d\n",P -> index);
+                return true;
+            }
+            else if (stack[P->index])
+            {
+                return true;
+            }
+        }
+    }
+    stack[T -> index] = false;
+    return false;
+}
+bool cycle(PtrBankNode BankHead, char bankname[])
+{
+    PtrBankNode BankTrv = findBank(BankHead, bankname);
+    int n = BankTrv->currno;
+    char index[n][20];
+    PtrCurrFromNode TrvCurrFrom = BankTrv->Currhead;
+    int i = 0;
+    while (TrvCurrFrom->next != NULL)
+    {
+        TrvCurrFrom = TrvCurrFrom->next;
+        strcpy(index[i], TrvCurrFrom->currname);
+        i++;
+    }
+    PtrList AdjList[n];
+    for (int i = 0; i < n; i++)
+    {
+        AdjList[i] = InitListNode();
+        AdjList[i]->index = i;
+        PtrList TrvRow = AdjList[i];
+        for (int j = 0; j < n; j++)
+        {
+            int conv = getConv(BankTrv->Currhead, index[i], index[j]);
+            if (conv != 0)
+            {
+                PtrList P = InitListNode();
+                P->currconv = conv;
+                P->index = j;
+                TrvRow->next = P;
+                TrvRow = P;
+            }
+        }
+    }
+
+    bool visited[n];
+    bool stack[n];
+    for (int i = 0; i < n; i++)
+    {
+        visited[i] = false;
+        stack[i] = false;
+    }
+    // printf("hm %d\n",AdjList[0] -> index);
+    for (int i = 0; i < n; i++)
+    {
+        PtrList P = AdjList[i];
+       // printf("Hi %d\n", i);
+        if (iscycle(P, visited, stack,AdjList))
+        {
+            return true;
+        }
+        printf("\n");
+        // printf("%d\n",visited[i]);
+    }
+
+    return false;
+}
