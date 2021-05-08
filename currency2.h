@@ -78,6 +78,18 @@ void getList(PtrBankNode BankHead,char bankname[]);
 int getConv(PtrCurrFromNode P, char currfrom[],char currto[]);
 
 
+struct PQueueNode   //minheap nodes
+{
+    int  n;//Vertex no. or index of vertex
+    int dist;// will store the current distance value of vertex
+};
 
+struct PQueue
+{
+    int size;   // No. of heapnodes in Pqueue present,capacity  will remain same but size will decrease when minnodes will be extracted 
+    int capacity; // No. of vertices in this particular graph
+    int *position; // To keep track of the position of vertex in minheap,can directly access that vertex in minheap  as its position is stored here
+    struct PQueueNode **node; //Will point to PqueueNode or minheap nodes
+};
 
 
