@@ -720,7 +720,7 @@ void swapMinHeapNode(struct PQueueNode** a,struct PQueueNode** b)  //swap 2 pque
 
 void minHeapify(struct PQueue* pQueue,int index) // heapify process is there to make PQueue follow the minheap condition
 {                                                // that every node is smaller than its children
-    int smallest, left, right;
+    int smallest, left, right;                   // Here in this function we will also swap nodes and change their position in  position array
     smallest = index;
     left = 2 * index + 1;
     right = 2 * index + 2;
@@ -733,59 +733,59 @@ void minHeapify(struct PQueue* pQueue,int index) // heapify process is there to 
  
     if (smallest != index)
     {
-        PQueueNode *smallestNode = pQueue->node[smallest];
-        PQueueNode *idxNode = pQueue->node[index];
+        PQueueNode *smallestNode = pQueue->node[smallest];  // Nodes which are neded to be swapped in minheap
+        PQueueNode *idxNode = pQueue->node[index];          // so that condition of minheap is followed
+  
+        pQueue->position[smallestNode->n] = index;          // here positions of nodes are changed
+        pQueue->position[idxNode->n] = smallest;            // which would be swapped 
  
-        pQueue->position[smallestNode->n] = index;
-        pQueue->position[idxNode->n] = smallest;
+        swapMinHeapNode(&pQueue->node[smallest],&pQueue->node[index]);  // the nodes are swapped here 
  
-        swapMinHeapNode(&pQueue->node[smallest],&pQueue->node[index]);
- 
-        minHeapify(pQueue, smallest);
+        minHeapify(pQueue, smallest);  //need to recursively call this function to convert entire tree in minheap
     }
 }
  
-int isEmpty(struct PQueue* pQueue)
+int isEmpty(struct PQueue* pQueue)  //to check if PQueue is empty or not
 {
-    return pQueue->size == 0;
+    return pQueue->size == 0;   // if size is 0 that means there are no minheap nodes in our priority queue.
 }
  
-struct PQueueNode* extractMin(struct PQueue*pQueue)
+struct PQueueNode* extractMin(struct PQueue*pQueue)  // to extarct minimum node from pqueue which would be first node
 {
     if (isEmpty(pQueue))return NULL;
  
-    struct PQueueNode* root =pQueue->node[0];
+    struct PQueueNode* root =pQueue->node[0]; // store the first node in root node and do operations on it
  
-    struct PQueueNode* lastNode =pQueue->node[pQueue->size - 1];
+    struct PQueueNode* lastNode =pQueue->node[pQueue->size - 1];  //here root node is replaced with last node
     pQueue->node[0] = lastNode;
  
-    pQueue->position[root->n] = pQueue->size-1;
+    pQueue->position[root->n] = pQueue->size-1;  // positions are updated in array for above replacement
     pQueue->position[lastNode->n] = 0;
  
-    --pQueue->size;
-    minHeapify(pQueue, 0);
+    --pQueue->size;   // size is decreased by one as one node is extracted,capacity or size of array will remain same
+    minHeapify(pQueue, 0);  // heapify the root to make sure minheap condition is followed
  
     return root;
 }
  
-void decreaseKey(struct PQueue* pQueue,int n, int dist)
+void decreaseKey(struct PQueue* pQueue,int n, int dist)  // function to update the distance value(decrease distance particullarly) in heap nodes
 {
-    int i = pQueue->position[n];
+    int i = pQueue->position[n];  // here position array is used to get the position of particular vertex in minheap directly
 
-    pQueue->node[i]->dist = dist;
+    pQueue->node[i]->dist = dist;  // get to node with the help if i found above and update its distance value
 
-    while (i && pQueue->node[i]->dist <pQueue->node[(i - 1) / 2]->dist)
+    while (i && pQueue->node[i]->dist <pQueue->node[(i - 1) / 2]->dist)  //travel up the tree while checking with parent that whether minheap condition is followed or not
     {
-        pQueue->position[pQueue->node[i]->n] =(i-1)/2;
-        pQueue->position[pQueue->node[(i-1)/2]->n] = i;
+        pQueue->position[pQueue->node[i]->n] =(i-1)/2;  // if minheap condition is not followed you will enter in loop
+        pQueue->position[pQueue->node[(i-1)/2]->n] = i;  // and keep on swapping node with parent untill minheap condition is not followed,swap position in position array also
         swapMinHeapNode(&pQueue->node[i],&pQueue->node[(i - 1) / 2]);
  
-        i = (i - 1) / 2;
+        i = (i - 1) / 2; ///go to next parent
     }
 }
-bool isMinHeap(struct PQueue *pQueue, int n)
+bool IsInPqueue(struct PQueue *pQueue, int n) // to check whether vertex n is priority queue or not
 {
-   if (pQueue->position[n] < pQueue->size)
+   if (pQueue->position[n] < pQueue->size)  // if it is not there then it would be outside the current size of priority queue
      return true;
    return false;
 }
