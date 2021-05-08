@@ -37,3 +37,13 @@ This is our raw solution to the given problem statement.
 Here A,B,C and so on depict the currencies and hence are the Vertices.
 The edges are the conversions from currency X to currency Y.
 
+## Instructions to compile and run our program
+
+1. Clone this repositry in your local machine.
+2. After cloning run this command : gcc main2.c
+3. You can run the command ./a.out to get the terminal experience of our program.
+4. You can also run ./a.out < Input.txt to test the input program made by us.
+5. To get an understanding of how the the program works and the Input Output details please head over to the readme.md file.
+
+Hope you like our program.
+ 
