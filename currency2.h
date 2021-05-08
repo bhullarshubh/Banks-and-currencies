@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <math.h>
+#define max 1e5 + 5
 
 typedef struct bankNode BankNode;
 typedef struct bankNode *PtrBankNode;
@@ -75,6 +76,7 @@ void delBank(PtrBankNode BankHead,char bankname[]);
 void getList(PtrBankNode BankHead,char bankname[]);
 
 int getConv(PtrCurrFromNode P, char currfrom[],char currto[]);
+
 
 
 

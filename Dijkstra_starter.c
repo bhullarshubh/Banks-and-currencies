@@ -18,7 +18,7 @@ int dijkstra(bank *g, int source, int dest)
     {
 
         distance[i] = max;
-        pq->node[i] = newPNode(i, distance[i]);
+        pq->node[i] = neiwPNode(i, distance[i]);
         pq->pos[i] = i;
     }
     distance[source] = 0;

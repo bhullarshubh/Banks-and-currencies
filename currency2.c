@@ -424,8 +424,49 @@ void getList(PtrBankNode BankHead,char bankname[])
             }
         }
     }
+   
+
+    int vertex = n;
+    int v = vertex;
+    int distance[v]; // distance array;
+    //calling priority queue to make the algo more efficient
+    PQueue *pq = createminheap(v);
+
+    for (int i = 0; i <= v; i++)
+    {
+
+        distance[i] = max;
+        pq->node[i] = neiwPNode(i, distance[i]);
+        pq->pos[i] = i;
+    }
+    distance[source] = 0;
+    pq->pos[source] = source;
+    pq->size = v;
+    decreaseKey(pq, source, distance[source]);
+    while (!isEmpty(pq))
+    {
+        PQueueNode *pqnode;
+        pqnode = extract(pq);
+        int x;
+        x = pqnode->v;
+        List *update;
+        update = g->list[x].head;
+        while (update != NULL)
+        {
+            int y;
+            y = update->num;
+            if (isInpq(pq, y) && distance[x] != max && update->weight + distance[x] < distance[y])
+            {
+                distance[y] = distance[x] + update->weight;
+                decreaseKey(pq, y, distance[y]);
+            }
+            update = update->next;
+        }
+    }
+    return distance[dest];
+
     
-    for(int i = 0; i < n; i++)
+   /*  for(int i = 0; i < n; i++)
     {
         printf("%d -> ",AdjList[i]->index);
         PtrList TrvRow = AdjList[i];
@@ -436,5 +477,5 @@ void getList(PtrBankNode BankHead,char bankname[])
         }
         printf("\n");
     }
-    printf("\n");
+    printf("\n"); */
 }
