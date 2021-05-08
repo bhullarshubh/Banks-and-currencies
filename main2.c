@@ -116,6 +116,20 @@ int main()
         {
             printf("Syntax Error\n");
         }
+        else if (strcmp(command, "findCycle") == 0)
+        {
+            char bankname[20];
+            scanf("%s", bankname);
+            PtrBankNode BankTrv = BankHead->next;
+            if (cycle(BankTrv, bankname) == true)
+            {
+                printf("\nA cycle between the currencies exists in bank %s\n", bankname);
+            }
+            else
+            {
+                printf("\nNo cycles exist in bank %s\n", bankname);
+            }
+        }
         printf("> ");
         scanf("%s", command);
     }
