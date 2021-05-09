@@ -2,15 +2,7 @@
 
 ## 1) Currency2.h 
 
-In this file we will declare 3 types of nodes- one for banks(bankNode), one for
-
-the currency being converted from(currFromNode) and one for the currency
-
-being converted to(currToNode) and their pointers. It will also declare a list
-
-and include the function prototype for various functions that will be defined in
-
-Currency.h.
+This file will declare the 4 types of nodes and pointers to them- one for banks(bankNode), one for the currency being converted from(currFromNode), one for the currency being converted to(currToNode) and a list node. This file will also include the function prototype for the various functions that will be defined in Currency2.c.
 
 ### bankNode- 
  This node stores the bank name(bankname[20]), currency number(currno), a pointer to the next bank node(next) and a pointer to the first “currency being converted from” node(Currhead).
@@ -30,7 +22,7 @@ This node stores the name of the currency being converted to (currname[20]), cur
 currency being converted to (next).
 
 ### List-  
-It will contain the index, currency conversion, and a pointer to the next.
+It will contain the index, currency conversion, and a pointer to the next node.
 
 ---
 
