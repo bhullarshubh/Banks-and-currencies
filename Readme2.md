@@ -369,7 +369,9 @@ Minheap is used because it gives us the smallest node in O(1) time complexity an
 First we create a minheap of size V where V are the no. of vertices in present graph we are working on. Every node of min heap contains vertex number and distance value of the vertex. 
 Initialize Min Heap with source vertex as root (first node) and the distance value assigned to source vertex is 0. The distance value assigned to all other vertices is infinite (very big value)
 While Min Heap is not empty, do following:
-a) Extract the vertex with minimum distance value node from Min Heap. Let the extracted vertex be u. 
-b) For every adjacent vertex v of u, check if v is in Min Heap. If v is in Min Heap and distance value is more than weight of u-v plus distance value of u, then update the        distance value of v. [Here the standard dijkstra algorithm is applied]
+1. Extract the vertex with minimum distance value node from Min Heap. Let the extracted vertex be u. 
+2. For every adjacent vertex v of u, check if v is in Min Heap. If v is in Min Heap and distance value is more than weight of u-v plus distance value of u, then update the distance value of v. [Here the standard dijkstra algorithm is applied].
+
+
 After all distances are updated and there is no more change, we will get the minimum path for all the vertices from the source and get minimum distance of our currency from   there.
 To find the best conversion we will iterate through all the graphs in which both those currencies are present and find the minimum path for conversion between respective 2 currencies, then we will find the minimum out of all the values we got from different banks to find the best conversion.
