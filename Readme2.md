@@ -252,11 +252,11 @@ delBank(PtrBankNode BankHead,  char bankname[]) -
 
 
 
-getConv(PtrCurrFromNode P, char currfrom[], char currto[]) -
+<u>getConv(PtrCurrFromNode P, char currfrom[], char currto[]) -</u>
 
-getList(PtrBankNode BankHead, char currfrom[], char currto[], char
+<u>getList(PtrBankNode BankHead, char currfrom[], char currto[], char
 
-bankname[]) -
+bankname[]) -</u>
 
 **3) main.c-**
 
