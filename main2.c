@@ -104,7 +104,7 @@ int main()
         {
             printf("\n1. addBank bankname\n");
             printf("2. printBank\n");
-            printf("3. delBank bankname\\n");
+            printf("3. delBank bankname\n");
             printf("4. addCurr currname bankname\n");
             printf("5. printAllCurr bankname\n");
             printf("6. delCurr currname bankname\n");

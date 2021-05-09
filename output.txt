@@ -1,0 +1,255 @@
+addBank bank1
+addCurr curr1 bank1
+addCurr curr2 bank1
+addConv curr1 curr2 6 bank1
+bestConv curr1 curr2
+addConv curr2 curr1 1 bank1
+bestConv curr1 curr2
+printAllCurr bank1
+addBank bank2
+addCurr curr1 bank2
+addCurr curr2 bank2
+addCurr curr3 bank2
+addCurr curr4 bank2
+addConv curr1 curr2 9 bank2
+addConv curr1 curr3 9 bank2
+addConv curr1 curr4 6 bank2
+bestConv curr1 curr4
+addConv curr2 curr1 2 bank2
+addConv curr2 curr3 8 bank2
+addConv curr2 curr4 3 bank2
+bestConv curr1 curr4
+addConv curr3 curr1 4 bank2
+addConv curr3 curr2 6 bank2
+addConv curr3 curr4 1 bank2
+bestConv curr1 curr4
+addConv curr4 curr1 4 bank2
+addConv curr4 curr2 6 bank2
+addConv curr4 curr3 5 bank2
+bestConv curr1 curr4
+printAllCurr bank2
+addBank bank3
+addCurr curr1 bank3
+addCurr curr2 bank3
+addCurr curr3 bank3
+addCurr curr4 bank3
+addCurr curr5 bank3
+addCurr curr6 bank3
+addCurr curr7 bank3
+addConv curr1 curr2 1 bank3
+addConv curr1 curr3 7 bank3
+addConv curr1 curr4 3 bank3
+addConv curr1 curr5 8 bank3
+addConv curr1 curr6 0 bank3
+addConv curr1 curr7 7 bank3
+bestConv curr1 curr7
+addConv curr2 curr1 2 bank3
+addConv curr2 curr3 2 bank3
+addConv curr2 curr4 1 bank3
+addConv curr2 curr5 5 bank3
+addConv curr2 curr6 1 bank3
+addConv curr2 curr7 9 bank3
+bestConv curr1 curr7
+addConv curr3 curr1 0 bank3
+addConv curr3 curr2 5 bank3
+addConv curr3 curr4 2 bank3
+addConv curr3 curr5 9 bank3
+addConv curr3 curr6 3 bank3
+addConv curr3 curr7 8 bank3
+bestConv curr1 curr7
+addConv curr4 curr1 3 bank3
+addConv curr4 curr2 4 bank3
+addConv curr4 curr3 7 bank3
+addConv curr4 curr5 9 bank3
+addConv curr4 curr6 8 bank3
+addConv curr4 curr7 8 bank3
+bestConv curr1 curr7
+addConv curr5 curr1 3 bank3
+addConv curr5 curr2 2 bank3
+addConv curr5 curr3 6 bank3
+addConv curr5 curr4 4 bank3
+addConv curr5 curr6 6 bank3
+addConv curr5 curr7 2 bank3
+bestConv curr1 curr7
+addConv curr6 curr1 1 bank3
+addConv curr6 curr2 0 bank3
+addConv curr6 curr3 2 bank3
+addConv curr6 curr4 7 bank3
+addConv curr6 curr5 8 bank3
+addConv curr6 curr7 4 bank3
+bestConv curr1 curr7
+addConv curr7 curr1 4 bank3
+addConv curr7 curr2 0 bank3
+addConv curr7 curr3 8 bank3
+addConv curr7 curr4 7 bank3
+addConv curr7 curr5 7 bank3
+addConv curr7 curr6 9 bank3
+bestConv curr1 curr7
+printAllCurr bank3
+addBank bank4
+addCurr curr1 bank4
+addCurr curr2 bank4
+addCurr curr3 bank4
+addCurr curr4 bank4
+addCurr curr5 bank4
+addCurr curr6 bank4
+addCurr curr7 bank4
+addCurr curr8 bank4
+addConv curr1 curr2 6 bank4
+addConv curr1 curr3 7 bank4
+addConv curr1 curr4 5 bank4
+addConv curr1 curr5 9 bank4
+addConv curr1 curr6 9 bank4
+addConv curr1 curr7 0 bank4
+addConv curr1 curr8 9 bank4
+bestConv curr1 curr8
+addConv curr2 curr1 2 bank4
+addConv curr2 curr3 5 bank4
+addConv curr2 curr4 9 bank4
+addConv curr2 curr5 3 bank4
+addConv curr2 curr6 3 bank4
+addConv curr2 curr7 7 bank4
+addConv curr2 curr8 8 bank4
+bestConv curr1 curr8
+addConv curr3 curr1 8 bank4
+addConv curr3 curr2 5 bank4
+addConv curr3 curr4 4 bank4
+addConv curr3 curr5 6 bank4
+addConv curr3 curr6 0 bank4
+addConv curr3 curr7 6 bank4
+addConv curr3 curr8 6 bank4
+bestConv curr1 curr8
+addConv curr4 curr1 4 bank4
+addConv curr4 curr2 5 bank4
+addConv curr4 curr3 4 bank4
+addConv curr4 curr5 8 bank4
+addConv curr4 curr6 9 bank4
+addConv curr4 curr7 7 bank4
+addConv curr4 curr8 6 bank4
+bestConv curr1 curr8
+addConv curr5 curr1 6 bank4
+addConv curr5 curr2 6 bank4
+addConv curr5 curr3 5 bank4
+addConv curr5 curr4 5 bank4
+addConv curr5 curr6 6 bank4
+addConv curr5 curr7 0 bank4
+addConv curr5 curr8 6 bank4
+bestConv curr1 curr8
+addConv curr6 curr1 5 bank4
+addConv curr6 curr2 3 bank4
+addConv curr6 curr3 5 bank4
+addConv curr6 curr4 9 bank4
+addConv curr6 curr5 8 bank4
+addConv curr6 curr7 6 bank4
+addConv curr6 curr8 2 bank4
+bestConv curr1 curr8
+addConv curr7 curr1 3 bank4
+addConv curr7 curr2 3 bank4
+addConv curr7 curr3 1 bank4
+addConv curr7 curr4 3 bank4
+addConv curr7 curr5 1 bank4
+addConv curr7 curr6 5 bank4
+addConv curr7 curr8 0 bank4
+bestConv curr1 curr8
+addConv curr8 curr1 1 bank4
+addConv curr8 curr2 3 bank4
+addConv curr8 curr3 6 bank4
+addConv curr8 curr4 5 bank4
+addConv curr8 curr5 8 bank4
+addConv curr8 curr6 3 bank4
+addConv curr8 curr7 5 bank4
+bestConv curr1 curr8
+printAllCurr bank4
+addBank bank5
+addCurr curr1 bank5
+addCurr curr2 bank5
+addCurr curr3 bank5
+addCurr curr4 bank5
+addCurr curr5 bank5
+addCurr curr6 bank5
+addCurr curr7 bank5
+addCurr curr8 bank5
+addCurr curr9 bank5
+addConv curr1 curr2 9 bank5
+addConv curr1 curr3 2 bank5
+addConv curr1 curr4 1 bank5
+addConv curr1 curr5 6 bank5
+addConv curr1 curr6 8 bank5
+addConv curr1 curr7 8 bank5
+addConv curr1 curr8 3 bank5
+addConv curr1 curr9 4 bank5
+bestConv curr1 curr9
+addConv curr2 curr1 1 bank5
+addConv curr2 curr3 9 bank5
+addConv curr2 curr4 9 bank5
+addConv curr2 curr5 4 bank5
+addConv curr2 curr6 6 bank5
+addConv curr2 curr7 8 bank5
+addConv curr2 curr8 2 bank5
+addConv curr2 curr9 3 bank5
+bestConv curr1 curr9
+addConv curr3 curr1 3 bank5
+addConv curr3 curr2 7 bank5
+addConv curr3 curr4 8 bank5
+addConv curr3 curr5 4 bank5
+addConv curr3 curr6 1 bank5
+addConv curr3 curr7 9 bank5
+addConv curr3 curr8 1 bank5
+addConv curr3 curr9 1 bank5
+bestConv curr1 curr9
+addConv curr4 curr1 2 bank5
+addConv curr4 curr2 7 bank5
+addConv curr4 curr3 9 bank5
+addConv curr4 curr5 9 bank5
+addConv curr4 curr6 5 bank5
+addConv curr4 curr7 4 bank5
+addConv curr4 curr8 4 bank5
+addConv curr4 curr9 7 bank5
+bestConv curr1 curr9
+addConv curr5 curr1 6 bank5
+addConv curr5 curr2 7 bank5
+addConv curr5 curr3 3 bank5
+addConv curr5 curr4 5 bank5
+addConv curr5 curr6 6 bank5
+addConv curr5 curr7 8 bank5
+addConv curr5 curr8 9 bank5
+addConv curr5 curr9 7 bank5
+bestConv curr1 curr9
+addConv curr6 curr1 7 bank5
+addConv curr6 curr2 1 bank5
+addConv curr6 curr3 1 bank5
+addConv curr6 curr4 3 bank5
+addConv curr6 curr5 1 bank5
+addConv curr6 curr7 5 bank5
+addConv curr6 curr8 8 bank5
+addConv curr6 curr9 4 bank5
+bestConv curr1 curr9
+addConv curr7 curr1 2 bank5
+addConv curr7 curr2 7 bank5
+addConv curr7 curr3 0 bank5
+addConv curr7 curr4 5 bank5
+addConv curr7 curr5 8 bank5
+addConv curr7 curr6 2 bank5
+addConv curr7 curr8 8 bank5
+addConv curr7 curr9 1 bank5
+bestConv curr1 curr9
+addConv curr8 curr1 1 bank5
+addConv curr8 curr2 0 bank5
+addConv curr8 curr3 0 bank5
+addConv curr8 curr4 6 bank5
+addConv curr8 curr5 4 bank5
+addConv curr8 curr6 7 bank5
+addConv curr8 curr7 5 bank5
+addConv curr8 curr9 1 bank5
+bestConv curr1 curr9
+addConv curr9 curr1 4 bank5
+addConv curr9 curr2 8 bank5
+addConv curr9 curr3 6 bank5
+addConv curr9 curr4 0 bank5
+addConv curr9 curr5 6 bank5
+addConv curr9 curr6 7 bank5
+addConv curr9 curr7 7 bank5
+addConv curr9 curr8 5 bank5
+bestConv curr1 curr9
+printAllCurr bank5
+exit
