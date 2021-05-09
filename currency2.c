@@ -597,7 +597,7 @@ int getList(PtrBankNode BankHead, char currfrom[], char currto[], char bankname[
 
     PtrPQueue pq = createPQueue(v); // Creating a priority queue pq
 
-    for (int i = 0; i <= v; i++)
+    for (int i = 0; i < v; i++)
     {
 
         distance[i] = max;                      //Initialzing the distance to infinity
