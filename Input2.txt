@@ -1,10 +1,176 @@
-addBank A 
-addCurr i A
-addCurr j A
-addCurr k A
-addConv i j 1 A 
-addConv j k 1 A 
-addConv k i 1 A 
-bestConv k i A 
-findCycle A 
+addBank bank0
+addCurr curr0 bank0
+addCurr curr1 bank0
+addCurr curr2 bank0
+addCurr curr3 bank0
+addCurr curr4 bank0
+addCurr curr5 bank0
+addConv curr0 curr1 12 bank0
+addConv curr0 curr2 11 bank0
+addConv curr0 curr3 5 bank0
+addConv curr0 curr4 18 bank0
+addConv curr0 curr5 18 bank0
+addConv curr1 curr0 18 bank0
+addConv curr1 curr2 11 bank0
+addConv curr1 curr3 8 bank0
+addConv curr1 curr4 15 bank0
+addConv curr1 curr5 3 bank0
+addConv curr2 curr0 13 bank0
+addConv curr2 curr1 3 bank0
+addConv curr2 curr3 10 bank0
+addConv curr2 curr4 2 bank0
+addConv curr2 curr5 19 bank0
+addConv curr3 curr0 2 bank0
+addConv curr3 curr1 4 bank0
+addConv curr3 curr2 15 bank0
+addConv curr3 curr4 1 bank0
+addConv curr3 curr5 19 bank0
+addConv curr4 curr0 8 bank0
+addConv curr4 curr1 5 bank0
+addConv curr4 curr2 17 bank0
+addConv curr4 curr3 7 bank0
+addConv curr4 curr5 4 bank0
+addConv curr5 curr0 16 bank0
+addConv curr5 curr1 2 bank0
+addConv curr5 curr2 18 bank0
+addConv curr5 curr3 7 bank0
+addConv curr5 curr4 3 bank0
+printAllCurr bank0
+bestConv curr0 curr5
+addBank bank1
+addCurr curr0 bank1
+addCurr curr1 bank1
+addCurr curr2 bank1
+addCurr curr3 bank1
+addCurr curr4 bank1
+addConv curr0 curr3 4 bank1
+addConv curr1 curr3 5 bank1
+addConv curr2 curr0 9 bank1
+addConv curr2 curr3 6 bank1
+addConv curr2 curr4 2 bank1
+addConv curr3 curr0 1 bank1
+addConv curr3 curr2 7 bank1
+addConv curr3 curr4 12 bank1
+addConv curr4 curr1 20 bank1
+addConv curr4 curr2 2 bank1
+printAllCurr bank1
+bestConv curr0 curr4
+addBank bank2
+addCurr curr0 bank2
+addCurr curr1 bank2
+addCurr curr2 bank2
+addCurr curr3 bank2
+addCurr curr4 bank2
+addCurr curr5 bank2
+addCurr curr6 bank2
+addCurr curr7 bank2
+addConv curr0 curr1 18 bank2
+addConv curr0 curr2 16 bank2
+addConv curr0 curr3 11 bank2
+addConv curr0 curr4 3 bank2
+addConv curr0 curr5 13 bank2
+addConv curr0 curr6 19 bank2
+addConv curr0 curr7 12 bank2
+addConv curr1 curr0 6 bank2
+addConv curr1 curr2 16 bank2
+addConv curr1 curr4 7 bank2
+addConv curr1 curr5 16 bank2
+addConv curr1 curr6 17 bank2
+addConv curr2 curr1 17 bank2
+addConv curr2 curr3 15 bank2
+addConv curr2 curr4 10 bank2
+addConv curr2 curr5 3 bank2
+addConv curr3 curr0 13 bank2
+addConv curr3 curr1 18 bank2
+addConv curr3 curr2 8 bank2
+addConv curr3 curr4 15 bank2
+addConv curr3 curr6 7 bank2
+addConv curr3 curr7 15 bank2
+addConv curr4 curr0 20 bank2
+addConv curr4 curr1 20 bank2
+addConv curr4 curr2 6 bank2
+addConv curr4 curr5 20 bank2
+addConv curr4 curr7 18 bank2
+addConv curr5 curr0 3 bank2
+addConv curr5 curr1 9 bank2
+addConv curr5 curr2 15 bank2
+addConv curr5 curr4 13 bank2
+addConv curr5 curr6 19 bank2
+addConv curr6 curr0 18 bank2
+addConv curr6 curr1 17 bank2
+addConv curr6 curr2 15 bank2
+addConv curr6 curr3 4 bank2
+addConv curr6 curr4 15 bank2
+addConv curr6 curr5 17 bank2
+addConv curr6 curr7 6 bank2
+addConv curr7 curr0 8 bank2
+addConv curr7 curr2 18 bank2
+addConv curr7 curr3 11 bank2
+addConv curr7 curr4 14 bank2
+addConv curr7 curr5 20 bank2
+addConv curr7 curr6 19 bank2
+printAllCurr bank2
+bestConv curr0 curr7
+addBank bank3
+addCurr curr0 bank3
+addCurr curr1 bank3
+addCurr curr2 bank3
+addCurr curr3 bank3
+addCurr curr4 bank3
+addCurr curr5 bank3
+addCurr curr6 bank3
+addCurr curr7 bank3
+addCurr curr8 bank3
+addConv curr0 curr2 1 bank3
+addConv curr0 curr3 8 bank3
+addConv curr0 curr6 7 bank3
+addConv curr0 curr7 15 bank3
+addConv curr1 curr2 3 bank3
+addConv curr1 curr3 5 bank3
+addConv curr1 curr4 19 bank3
+addConv curr1 curr5 9 bank3
+addConv curr2 curr0 8 bank3
+addConv curr2 curr8 18 bank3
+addConv curr3 curr1 20 bank3
+addConv curr3 curr2 1 bank3
+addConv curr3 curr4 2 bank3
+addConv curr3 curr7 15 bank3
+addConv curr4 curr2 16 bank3
+addConv curr4 curr5 5 bank3
+addConv curr4 curr6 14 bank3
+addConv curr5 curr1 4 bank3
+addConv curr5 curr2 3 bank3
+addConv curr5 curr3 2 bank3
+addConv curr5 curr4 20 bank3
+addConv curr5 curr8 10 bank3
+addConv curr6 curr0 4 bank3
+addConv curr6 curr1 1 bank3
+addConv curr6 curr2 11 bank3
+addConv curr7 curr2 9 bank3
+addConv curr7 curr3 10 bank3
+addConv curr7 curr4 11 bank3
+addConv curr7 curr5 11 bank3
+addConv curr8 curr1 9 bank3
+addConv curr8 curr2 7 bank3
+addConv curr8 curr4 13 bank3
+addConv curr8 curr6 15 bank3
+addConv curr8 curr7 18 bank3
+printAllCurr bank3
+bestConv curr0 curr8
+addBank bank4
+addCurr curr0 bank4
+addCurr curr1 bank4
+addCurr curr2 bank4
+addCurr curr3 bank4
+addCurr curr4 bank4
+addConv curr0 curr4 17 bank4
+addConv curr1 curr2 2 bank4
+addConv curr1 curr4 4 bank4
+addConv curr2 curr3 11 bank4
+addConv curr3 curr4 16 bank4
+addConv curr4 curr0 11 bank4
+addConv curr4 curr2 18 bank4
+addConv curr4 curr3 15 bank4
+printAllCurr bank4
+bestConv curr0 curr4
 exit

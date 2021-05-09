@@ -1,255 +1,708 @@
-addBank bank1
-addCurr curr1 bank1
-addCurr curr2 bank1
-addConv curr1 curr2 6 bank1
-bestConv curr1 curr2
-addConv curr2 curr1 1 bank1
-bestConv curr1 curr2
-printAllCurr bank1
-addBank bank2
-addCurr curr1 bank2
-addCurr curr2 bank2
-addCurr curr3 bank2
-addCurr curr4 bank2
-addConv curr1 curr2 9 bank2
-addConv curr1 curr3 9 bank2
-addConv curr1 curr4 6 bank2
-bestConv curr1 curr4
-addConv curr2 curr1 2 bank2
-addConv curr2 curr3 8 bank2
-addConv curr2 curr4 3 bank2
-bestConv curr1 curr4
-addConv curr3 curr1 4 bank2
-addConv curr3 curr2 6 bank2
-addConv curr3 curr4 1 bank2
-bestConv curr1 curr4
-addConv curr4 curr1 4 bank2
-addConv curr4 curr2 6 bank2
-addConv curr4 curr3 5 bank2
-bestConv curr1 curr4
-printAllCurr bank2
-addBank bank3
-addCurr curr1 bank3
-addCurr curr2 bank3
-addCurr curr3 bank3
-addCurr curr4 bank3
-addCurr curr5 bank3
-addCurr curr6 bank3
-addCurr curr7 bank3
-addConv curr1 curr2 1 bank3
-addConv curr1 curr3 7 bank3
-addConv curr1 curr4 3 bank3
-addConv curr1 curr5 8 bank3
-addConv curr1 curr6 0 bank3
-addConv curr1 curr7 7 bank3
-bestConv curr1 curr7
-addConv curr2 curr1 2 bank3
-addConv curr2 curr3 2 bank3
-addConv curr2 curr4 1 bank3
-addConv curr2 curr5 5 bank3
-addConv curr2 curr6 1 bank3
-addConv curr2 curr7 9 bank3
-bestConv curr1 curr7
-addConv curr3 curr1 0 bank3
-addConv curr3 curr2 5 bank3
-addConv curr3 curr4 2 bank3
-addConv curr3 curr5 9 bank3
-addConv curr3 curr6 3 bank3
-addConv curr3 curr7 8 bank3
-bestConv curr1 curr7
-addConv curr4 curr1 3 bank3
-addConv curr4 curr2 4 bank3
-addConv curr4 curr3 7 bank3
-addConv curr4 curr5 9 bank3
-addConv curr4 curr6 8 bank3
-addConv curr4 curr7 8 bank3
-bestConv curr1 curr7
-addConv curr5 curr1 3 bank3
-addConv curr5 curr2 2 bank3
-addConv curr5 curr3 6 bank3
-addConv curr5 curr4 4 bank3
-addConv curr5 curr6 6 bank3
-addConv curr5 curr7 2 bank3
-bestConv curr1 curr7
-addConv curr6 curr1 1 bank3
-addConv curr6 curr2 0 bank3
-addConv curr6 curr3 2 bank3
-addConv curr6 curr4 7 bank3
-addConv curr6 curr5 8 bank3
-addConv curr6 curr7 4 bank3
-bestConv curr1 curr7
-addConv curr7 curr1 4 bank3
-addConv curr7 curr2 0 bank3
-addConv curr7 curr3 8 bank3
-addConv curr7 curr4 7 bank3
-addConv curr7 curr5 7 bank3
-addConv curr7 curr6 9 bank3
-bestConv curr1 curr7
-printAllCurr bank3
-addBank bank4
-addCurr curr1 bank4
-addCurr curr2 bank4
-addCurr curr3 bank4
-addCurr curr4 bank4
-addCurr curr5 bank4
-addCurr curr6 bank4
-addCurr curr7 bank4
-addCurr curr8 bank4
-addConv curr1 curr2 6 bank4
-addConv curr1 curr3 7 bank4
-addConv curr1 curr4 5 bank4
-addConv curr1 curr5 9 bank4
-addConv curr1 curr6 9 bank4
-addConv curr1 curr7 0 bank4
-addConv curr1 curr8 9 bank4
-bestConv curr1 curr8
-addConv curr2 curr1 2 bank4
-addConv curr2 curr3 5 bank4
-addConv curr2 curr4 9 bank4
-addConv curr2 curr5 3 bank4
-addConv curr2 curr6 3 bank4
-addConv curr2 curr7 7 bank4
-addConv curr2 curr8 8 bank4
-bestConv curr1 curr8
-addConv curr3 curr1 8 bank4
-addConv curr3 curr2 5 bank4
-addConv curr3 curr4 4 bank4
-addConv curr3 curr5 6 bank4
-addConv curr3 curr6 0 bank4
-addConv curr3 curr7 6 bank4
-addConv curr3 curr8 6 bank4
-bestConv curr1 curr8
-addConv curr4 curr1 4 bank4
-addConv curr4 curr2 5 bank4
-addConv curr4 curr3 4 bank4
-addConv curr4 curr5 8 bank4
-addConv curr4 curr6 9 bank4
-addConv curr4 curr7 7 bank4
-addConv curr4 curr8 6 bank4
-bestConv curr1 curr8
-addConv curr5 curr1 6 bank4
-addConv curr5 curr2 6 bank4
-addConv curr5 curr3 5 bank4
-addConv curr5 curr4 5 bank4
-addConv curr5 curr6 6 bank4
-addConv curr5 curr7 0 bank4
-addConv curr5 curr8 6 bank4
-bestConv curr1 curr8
-addConv curr6 curr1 5 bank4
-addConv curr6 curr2 3 bank4
-addConv curr6 curr3 5 bank4
-addConv curr6 curr4 9 bank4
-addConv curr6 curr5 8 bank4
-addConv curr6 curr7 6 bank4
-addConv curr6 curr8 2 bank4
-bestConv curr1 curr8
-addConv curr7 curr1 3 bank4
-addConv curr7 curr2 3 bank4
-addConv curr7 curr3 1 bank4
-addConv curr7 curr4 3 bank4
-addConv curr7 curr5 1 bank4
-addConv curr7 curr6 5 bank4
-addConv curr7 curr8 0 bank4
-bestConv curr1 curr8
-addConv curr8 curr1 1 bank4
-addConv curr8 curr2 3 bank4
-addConv curr8 curr3 6 bank4
-addConv curr8 curr4 5 bank4
-addConv curr8 curr5 8 bank4
-addConv curr8 curr6 3 bank4
-addConv curr8 curr7 5 bank4
-bestConv curr1 curr8
-printAllCurr bank4
-addBank bank5
-addCurr curr1 bank5
-addCurr curr2 bank5
-addCurr curr3 bank5
-addCurr curr4 bank5
-addCurr curr5 bank5
-addCurr curr6 bank5
-addCurr curr7 bank5
-addCurr curr8 bank5
-addCurr curr9 bank5
-addConv curr1 curr2 9 bank5
-addConv curr1 curr3 2 bank5
-addConv curr1 curr4 1 bank5
-addConv curr1 curr5 6 bank5
-addConv curr1 curr6 8 bank5
-addConv curr1 curr7 8 bank5
-addConv curr1 curr8 3 bank5
-addConv curr1 curr9 4 bank5
-bestConv curr1 curr9
-addConv curr2 curr1 1 bank5
-addConv curr2 curr3 9 bank5
-addConv curr2 curr4 9 bank5
-addConv curr2 curr5 4 bank5
-addConv curr2 curr6 6 bank5
-addConv curr2 curr7 8 bank5
-addConv curr2 curr8 2 bank5
-addConv curr2 curr9 3 bank5
-bestConv curr1 curr9
-addConv curr3 curr1 3 bank5
-addConv curr3 curr2 7 bank5
-addConv curr3 curr4 8 bank5
-addConv curr3 curr5 4 bank5
-addConv curr3 curr6 1 bank5
-addConv curr3 curr7 9 bank5
-addConv curr3 curr8 1 bank5
-addConv curr3 curr9 1 bank5
-bestConv curr1 curr9
-addConv curr4 curr1 2 bank5
-addConv curr4 curr2 7 bank5
-addConv curr4 curr3 9 bank5
-addConv curr4 curr5 9 bank5
-addConv curr4 curr6 5 bank5
-addConv curr4 curr7 4 bank5
-addConv curr4 curr8 4 bank5
-addConv curr4 curr9 7 bank5
-bestConv curr1 curr9
-addConv curr5 curr1 6 bank5
-addConv curr5 curr2 7 bank5
-addConv curr5 curr3 3 bank5
-addConv curr5 curr4 5 bank5
-addConv curr5 curr6 6 bank5
-addConv curr5 curr7 8 bank5
-addConv curr5 curr8 9 bank5
-addConv curr5 curr9 7 bank5
-bestConv curr1 curr9
-addConv curr6 curr1 7 bank5
-addConv curr6 curr2 1 bank5
-addConv curr6 curr3 1 bank5
-addConv curr6 curr4 3 bank5
-addConv curr6 curr5 1 bank5
-addConv curr6 curr7 5 bank5
-addConv curr6 curr8 8 bank5
-addConv curr6 curr9 4 bank5
-bestConv curr1 curr9
-addConv curr7 curr1 2 bank5
-addConv curr7 curr2 7 bank5
-addConv curr7 curr3 0 bank5
-addConv curr7 curr4 5 bank5
-addConv curr7 curr5 8 bank5
-addConv curr7 curr6 2 bank5
-addConv curr7 curr8 8 bank5
-addConv curr7 curr9 1 bank5
-bestConv curr1 curr9
-addConv curr8 curr1 1 bank5
-addConv curr8 curr2 0 bank5
-addConv curr8 curr3 0 bank5
-addConv curr8 curr4 6 bank5
-addConv curr8 curr5 4 bank5
-addConv curr8 curr6 7 bank5
-addConv curr8 curr7 5 bank5
-addConv curr8 curr9 1 bank5
-bestConv curr1 curr9
-addConv curr9 curr1 4 bank5
-addConv curr9 curr2 8 bank5
-addConv curr9 curr3 6 bank5
-addConv curr9 curr4 0 bank5
-addConv curr9 curr5 6 bank5
-addConv curr9 curr6 7 bank5
-addConv curr9 curr7 7 bank5
-addConv curr9 curr8 5 bank5
-bestConv curr1 curr9
-printAllCurr bank5
-exit
+type 'commands' to see list of commands
+> 
+Added bank bank0
+
+> 
+Added currency curr0 to bank bank0
+
+> 
+Added currency curr1 to bank bank0
+
+> 
+Added currency curr2 to bank bank0
+
+> 
+Added currency curr3 to bank bank0
+
+> 
+Added currency curr4 to bank bank0
+
+> 
+Added currency curr5 to bank bank0
+
+> 
+Added conversion curr0 to curr1 to bank bank0
+
+> 
+Added conversion curr0 to curr2 to bank bank0
+
+> 
+Added conversion curr0 to curr3 to bank bank0
+
+> 
+Added conversion curr0 to curr4 to bank bank0
+
+> 
+Added conversion curr0 to curr5 to bank bank0
+
+> 
+Added conversion curr1 to curr0 to bank bank0
+
+> 
+Added conversion curr1 to curr2 to bank bank0
+
+> 
+Added conversion curr1 to curr3 to bank bank0
+
+> 
+Added conversion curr1 to curr4 to bank bank0
+
+> 
+Added conversion curr1 to curr5 to bank bank0
+
+> 
+Added conversion curr2 to curr0 to bank bank0
+
+> 
+Added conversion curr2 to curr1 to bank bank0
+
+> 
+Added conversion curr2 to curr3 to bank bank0
+
+> 
+Added conversion curr2 to curr4 to bank bank0
+
+> 
+Added conversion curr2 to curr5 to bank bank0
+
+> 
+Added conversion curr3 to curr0 to bank bank0
+
+> 
+Added conversion curr3 to curr1 to bank bank0
+
+> 
+Added conversion curr3 to curr2 to bank bank0
+
+> 
+Added conversion curr3 to curr4 to bank bank0
+
+> 
+Added conversion curr3 to curr5 to bank bank0
+
+> 
+Added conversion curr4 to curr0 to bank bank0
+
+> 
+Added conversion curr4 to curr1 to bank bank0
+
+> 
+Added conversion curr4 to curr2 to bank bank0
+
+> 
+Added conversion curr4 to curr3 to bank bank0
+
+> 
+Added conversion curr4 to curr5 to bank bank0
+
+> 
+Added conversion curr5 to curr0 to bank bank0
+
+> 
+Added conversion curr5 to curr1 to bank bank0
+
+> 
+Added conversion curr5 to curr2 to bank bank0
+
+> 
+Added conversion curr5 to curr3 to bank bank0
+
+> 
+Added conversion curr5 to curr4 to bank bank0
+
+> 
+
+			curr0		curr1		curr2		curr3		curr4		curr5		
+
+curr0		0.00		12.00		11.00		5.00		18.00		18.00		
+
+
+curr1		18.00		0.00		11.00		8.00		15.00		3.00		
+
+
+curr2		13.00		3.00		0.00		10.00		2.00		19.00		
+
+
+curr3		2.00		4.00		15.00		0.00		1.00		19.00		
+
+
+curr4		8.00		5.00		17.00		7.00		0.00		4.00		
+
+
+curr5		16.00		2.00		18.00		7.00		3.00		0.00		
+
+
+> 0 -> (1,12) (2,11) (3,5) (4,18) (5,18) 
+1 -> (0,18) (2,11) (3,8) (4,15) (5,3) 
+2 -> (0,13) (1,3) (3,10) (4,2) (5,19) 
+3 -> (0,2) (1,4) (2,15) (4,1) (5,19) 
+4 -> (0,8) (1,5) (2,17) (3,7) (5,4) 
+5 -> (0,16) (1,2) (2,18) (3,7) (4,3) 
+
+
+The best conversion rate from curr0 to curr5 exists in bank bank0 with conversion rate 10
+
+> 
+Added bank bank1
+
+> 
+Added currency curr0 to bank bank1
+
+> 
+Added currency curr1 to bank bank1
+
+> 
+Added currency curr2 to bank bank1
+
+> 
+Added currency curr3 to bank bank1
+
+> 
+Added currency curr4 to bank bank1
+
+> 
+Added conversion curr0 to curr3 to bank bank1
+
+> 
+Added conversion curr1 to curr3 to bank bank1
+
+> 
+Added conversion curr2 to curr0 to bank bank1
+
+> 
+Added conversion curr2 to curr3 to bank bank1
+
+> 
+Added conversion curr2 to curr4 to bank bank1
+
+> 
+Added conversion curr3 to curr0 to bank bank1
+
+> 
+Added conversion curr3 to curr2 to bank bank1
+
+> 
+Added conversion curr3 to curr4 to bank bank1
+
+> 
+Added conversion curr4 to curr1 to bank bank1
+
+> 
+Added conversion curr4 to curr2 to bank bank1
+
+> 
+
+			curr0		curr1		curr2		curr3		curr4		
+
+curr0		0.00		0.00		0.00		4.00		0.00		
+
+
+curr1		0.00		0.00		0.00		5.00		0.00		
+
+
+curr2		9.00		0.00		0.00		6.00		2.00		
+
+
+curr3		1.00		0.00		7.00		0.00		12.00		
+
+
+curr4		0.00		20.00		2.00		0.00		0.00		
+
+
+> 0 -> (1,12) (2,11) (3,5) (4,18) (5,18) 
+1 -> (0,18) (2,11) (3,8) (4,15) (5,3) 
+2 -> (0,13) (1,3) (3,10) (4,2) (5,19) 
+3 -> (0,2) (1,4) (2,15) (4,1) (5,19) 
+4 -> (0,8) (1,5) (2,17) (3,7) (5,4) 
+5 -> (0,16) (1,2) (2,18) (3,7) (4,3) 
+
+0 -> (3,4) 
+1 -> (3,5) 
+2 -> (0,9) (3,6) (4,2) 
+3 -> (0,1) (2,7) (4,12) 
+4 -> (1,20) (2,2) 
+
+
+The best conversion rate from curr0 to curr4 exists in bank bank0 with conversion rate 6
+
+> 
+Added bank bank2
+
+> 
+Added currency curr0 to bank bank2
+
+> 
+Added currency curr1 to bank bank2
+
+> 
+Added currency curr2 to bank bank2
+
+> 
+Added currency curr3 to bank bank2
+
+> 
+Added currency curr4 to bank bank2
+
+> 
+Added currency curr5 to bank bank2
+
+> 
+Added currency curr6 to bank bank2
+
+> 
+Added currency curr7 to bank bank2
+
+> 
+Added conversion curr0 to curr1 to bank bank2
+
+> 
+Added conversion curr0 to curr2 to bank bank2
+
+> 
+Added conversion curr0 to curr3 to bank bank2
+
+> 
+Added conversion curr0 to curr4 to bank bank2
+
+> 
+Added conversion curr0 to curr5 to bank bank2
+
+> 
+Added conversion curr0 to curr6 to bank bank2
+
+> 
+Added conversion curr0 to curr7 to bank bank2
+
+> 
+Added conversion curr1 to curr0 to bank bank2
+
+> 
+Added conversion curr1 to curr2 to bank bank2
+
+> 
+Added conversion curr1 to curr4 to bank bank2
+
+> 
+Added conversion curr1 to curr5 to bank bank2
+
+> 
+Added conversion curr1 to curr6 to bank bank2
+
+> 
+Added conversion curr2 to curr1 to bank bank2
+
+> 
+Added conversion curr2 to curr3 to bank bank2
+
+> 
+Added conversion curr2 to curr4 to bank bank2
+
+> 
+Added conversion curr2 to curr5 to bank bank2
+
+> 
+Added conversion curr3 to curr0 to bank bank2
+
+> 
+Added conversion curr3 to curr1 to bank bank2
+
+> 
+Added conversion curr3 to curr2 to bank bank2
+
+> 
+Added conversion curr3 to curr4 to bank bank2
+
+> 
+Added conversion curr3 to curr6 to bank bank2
+
+> 
+Added conversion curr3 to curr7 to bank bank2
+
+> 
+Added conversion curr4 to curr0 to bank bank2
+
+> 
+Added conversion curr4 to curr1 to bank bank2
+
+> 
+Added conversion curr4 to curr2 to bank bank2
+
+> 
+Added conversion curr4 to curr5 to bank bank2
+
+> 
+Added conversion curr4 to curr7 to bank bank2
+
+> 
+Added conversion curr5 to curr0 to bank bank2
+
+> 
+Added conversion curr5 to curr1 to bank bank2
+
+> 
+Added conversion curr5 to curr2 to bank bank2
+
+> 
+Added conversion curr5 to curr4 to bank bank2
+
+> 
+Added conversion curr5 to curr6 to bank bank2
+
+> 
+Added conversion curr6 to curr0 to bank bank2
+
+> 
+Added conversion curr6 to curr1 to bank bank2
+
+> 
+Added conversion curr6 to curr2 to bank bank2
+
+> 
+Added conversion curr6 to curr3 to bank bank2
+
+> 
+Added conversion curr6 to curr4 to bank bank2
+
+> 
+Added conversion curr6 to curr5 to bank bank2
+
+> 
+Added conversion curr6 to curr7 to bank bank2
+
+> 
+Added conversion curr7 to curr0 to bank bank2
+
+> 
+Added conversion curr7 to curr2 to bank bank2
+
+> 
+Added conversion curr7 to curr3 to bank bank2
+
+> 
+Added conversion curr7 to curr4 to bank bank2
+
+> 
+Added conversion curr7 to curr5 to bank bank2
+
+> 
+Added conversion curr7 to curr6 to bank bank2
+
+> 
+
+			curr0		curr1		curr2		curr3		curr4		curr5		curr6		curr7		
+
+curr0		0.00		18.00		16.00		11.00		3.00		13.00		19.00		12.00		
+
+
+curr1		6.00		0.00		16.00		0.00		7.00		16.00		17.00		0.00		
+
+
+curr2		0.00		17.00		0.00		15.00		10.00		3.00		0.00		0.00		
+
+
+curr3		13.00		18.00		8.00		0.00		15.00		0.00		7.00		15.00		
+
+
+curr4		20.00		20.00		6.00		0.00		0.00		20.00		0.00		18.00		
+
+
+curr5		3.00		9.00		15.00		0.00		13.00		0.00		19.00		0.00		
+
+
+curr6		18.00		17.00		15.00		4.00		15.00		17.00		0.00		6.00		
+
+
+curr7		8.00		0.00		18.00		11.00		14.00		20.00		19.00		0.00		
+
+
+> 0 -> (1,18) (2,16) (3,11) (4,3) (5,13) (6,19) (7,12) 
+1 -> (0,6) (2,16) (4,7) (5,16) (6,17) 
+2 -> (1,17) (3,15) (4,10) (5,3) 
+3 -> (0,13) (1,18) (2,8) (4,15) (6,7) (7,15) 
+4 -> (0,20) (1,20) (2,6) (5,20) (7,18) 
+5 -> (0,3) (1,9) (2,15) (4,13) (6,19) 
+6 -> (0,18) (1,17) (2,15) (3,4) (4,15) (5,17) (7,6) 
+7 -> (0,8) (2,18) (3,11) (4,14) (5,20) (6,19) 
+
+
+The best conversion rate from curr0 to curr7 exists in bank bank2 with conversion rate 12
+
+> 
+Added bank bank3
+
+> 
+Added currency curr0 to bank bank3
+
+> 
+Added currency curr1 to bank bank3
+
+> 
+Added currency curr2 to bank bank3
+
+> 
+Added currency curr3 to bank bank3
+
+> 
+Added currency curr4 to bank bank3
+
+> 
+Added currency curr5 to bank bank3
+
+> 
+Added currency curr6 to bank bank3
+
+> 
+Added currency curr7 to bank bank3
+
+> 
+Added currency curr8 to bank bank3
+
+> 
+Added conversion curr0 to curr2 to bank bank3
+
+> 
+Added conversion curr0 to curr3 to bank bank3
+
+> 
+Added conversion curr0 to curr6 to bank bank3
+
+> 
+Added conversion curr0 to curr7 to bank bank3
+
+> 
+Added conversion curr1 to curr2 to bank bank3
+
+> 
+Added conversion curr1 to curr3 to bank bank3
+
+> 
+Added conversion curr1 to curr4 to bank bank3
+
+> 
+Added conversion curr1 to curr5 to bank bank3
+
+> 
+Added conversion curr2 to curr0 to bank bank3
+
+> 
+Added conversion curr2 to curr8 to bank bank3
+
+> 
+Added conversion curr3 to curr1 to bank bank3
+
+> 
+Added conversion curr3 to curr2 to bank bank3
+
+> 
+Added conversion curr3 to curr4 to bank bank3
+
+> 
+Added conversion curr3 to curr7 to bank bank3
+
+> 
+Added conversion curr4 to curr2 to bank bank3
+
+> 
+Added conversion curr4 to curr5 to bank bank3
+
+> 
+Added conversion curr4 to curr6 to bank bank3
+
+> 
+Added conversion curr5 to curr1 to bank bank3
+
+> 
+Added conversion curr5 to curr2 to bank bank3
+
+> 
+Added conversion curr5 to curr3 to bank bank3
+
+> 
+Added conversion curr5 to curr4 to bank bank3
+
+> 
+Added conversion curr5 to curr8 to bank bank3
+
+> 
+Added conversion curr6 to curr0 to bank bank3
+
+> 
+Added conversion curr6 to curr1 to bank bank3
+
+> 
+Added conversion curr6 to curr2 to bank bank3
+
+> 
+Added conversion curr7 to curr2 to bank bank3
+
+> 
+Added conversion curr7 to curr3 to bank bank3
+
+> 
+Added conversion curr7 to curr4 to bank bank3
+
+> 
+Added conversion curr7 to curr5 to bank bank3
+
+> 
+Added conversion curr8 to curr1 to bank bank3
+
+> 
+Added conversion curr8 to curr2 to bank bank3
+
+> 
+Added conversion curr8 to curr4 to bank bank3
+
+> 
+Added conversion curr8 to curr6 to bank bank3
+
+> 
+Added conversion curr8 to curr7 to bank bank3
+
+> 
+
+			curr0		curr1		curr2		curr3		curr4		curr5		curr6		curr7		curr8		
+
+curr0		0.00		0.00		1.00		8.00		0.00		0.00		7.00		15.00		0.00		
+
+
+curr1		0.00		0.00		3.00		5.00		19.00		9.00		0.00		0.00		0.00		
+
+
+curr2		8.00		0.00		0.00		0.00		0.00		0.00		0.00		0.00		18.00		
+
+
+curr3		0.00		20.00		1.00		0.00		2.00		0.00		0.00		15.00		0.00		
+
+
+curr4		0.00		0.00		16.00		0.00		0.00		5.00		14.00		0.00		0.00		
+
+
+curr5		0.00		4.00		3.00		2.00		20.00		0.00		0.00		0.00		10.00		
+
+
+curr6		4.00		1.00		11.00		0.00		0.00		0.00		0.00		0.00		0.00		
+
+
+curr7		0.00		0.00		9.00		10.00		11.00		11.00		0.00		0.00		0.00		
+
+
+curr8		0.00		9.00		7.00		0.00		13.00		0.00		15.00		18.00		0.00		
+
+
+> 0 -> (2,1) (3,8) (6,7) (7,15) 
+1 -> (2,3) (3,5) (4,19) (5,9) 
+2 -> (0,8) (8,18) 
+3 -> (1,20) (2,1) (4,2) (7,15) 
+4 -> (2,16) (5,5) (6,14) 
+5 -> (1,4) (2,3) (3,2) (4,20) (8,10) 
+6 -> (0,4) (1,1) (2,11) 
+7 -> (2,9) (3,10) (4,11) (5,11) 
+8 -> (1,9) (2,7) (4,13) (6,15) (7,18) 
+
+
+The best conversion rate from curr0 to curr8 exists in bank bank3 with conversion rate 19
+
+> 
+Added bank bank4
+
+> 
+Added currency curr0 to bank bank4
+
+> 
+Added currency curr1 to bank bank4
+
+> 
+Added currency curr2 to bank bank4
+
+> 
+Added currency curr3 to bank bank4
+
+> 
+Added currency curr4 to bank bank4
+
+> 
+Added conversion curr0 to curr4 to bank bank4
+
+> 
+Added conversion curr1 to curr2 to bank bank4
+
+> 
+Added conversion curr1 to curr4 to bank bank4
+
+> 
+Added conversion curr2 to curr3 to bank bank4
+
+> 
+Added conversion curr3 to curr4 to bank bank4
+
+> 
+Added conversion curr4 to curr0 to bank bank4
+
+> 
+Added conversion curr4 to curr2 to bank bank4
+
+> 
+Added conversion curr4 to curr3 to bank bank4
+
+> 
+
+			curr0		curr1		curr2		curr3		curr4		
+
+curr0		0.00		0.00		0.00		0.00		17.00		
+
+
+curr1		0.00		0.00		2.00		0.00		4.00		
+
+
+curr2		0.00		0.00		0.00		11.00		0.00		
+
+
+curr3		0.00		0.00		0.00		0.00		16.00		
+
+
+curr4		11.00		0.00		18.00		15.00		0.00		
+
+
+> 0 -> (1,12) (2,11) (3,5) (4,18) (5,18) 
+1 -> (0,18) (2,11) (3,8) (4,15) (5,3) 
+2 -> (0,13) (1,3) (3,10) (4,2) (5,19) 
+3 -> (0,2) (1,4) (2,15) (4,1) (5,19) 
+4 -> (0,8) (1,5) (2,17) (3,7) (5,4) 
+5 -> (0,16) (1,2) (2,18) (3,7) (4,3) 
+
+0 -> (3,4) 
+1 -> (3,5) 
+2 -> (0,9) (3,6) (4,2) 
+3 -> (0,1) (2,7) (4,12) 
+4 -> (1,20) (2,2) 
+
+0 -> (1,18) (2,16) (3,11) (4,3) (5,13) (6,19) (7,12) 
+1 -> (0,6) (2,16) (4,7) (5,16) (6,17) 
+2 -> (1,17) (3,15) (4,10) (5,3) 
+3 -> (0,13) (1,18) (2,8) (4,15) (6,7) (7,15) 
+4 -> (0,20) (1,20) (2,6) (5,20) (7,18) 
+5 -> (0,3) (1,9) (2,15) (4,13) (6,19) 
+6 -> (0,18) (1,17) (2,15) (3,4) (4,15) (5,17) (7,6) 
+7 -> (0,8) (2,18) (3,11) (4,14) (5,20) (6,19) 
+
+0 -> (2,1) (3,8) (6,7) (7,15) 
+1 -> (2,3) (3,5) (4,19) (5,9) 
+2 -> (0,8) (8,18) 
+3 -> (1,20) (2,1) (4,2) (7,15) 
+4 -> (2,16) (5,5) (6,14) 
+5 -> (1,4) (2,3) (3,2) (4,20) (8,10) 
+6 -> (0,4) (1,1) (2,11) 
+7 -> (2,9) (3,10) (4,11) (5,11) 
+8 -> (1,9) (2,7) (4,13) (6,15) (7,18) 
+
+0 -> (4,17) 
+1 -> (2,2) (4,4) 
+2 -> (3,11) 
+3 -> (4,16) 
+4 -> (0,11) (2,18) (3,15) 
+
+
+The best conversion rate from curr0 to curr4 exists in bank bank2 with conversion rate 3
+
+> 

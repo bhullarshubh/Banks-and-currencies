@@ -105,6 +105,8 @@ bool NoBanksExist(PtrBankNode BankHead,int mode);
 bool CurrencyAlreadyPresent(PtrCurrFromNode TrvCurrFrom, char currname[],int mode);
 bool NoCurrencyExists(PtrBankNode BankHead, char bankname[],int mode);
 bool IsInPqueue(struct PQueue *pQueue, int n);
+bool cycle(PtrBankNode BankHead,char bankname[]);
+bool iscycle(PtrListNode P,bool visited[],bool stack[],PtrListNode AdjList[]);
 
 void addBank(PtrBankNode BankHead, char bankname[]);
 void printBanks(PtrBankNode BankHead);
@@ -124,5 +126,4 @@ int cmpfunc(const void *p, const void *q);
 int isEmpty(struct PQueue *pQueue);
 int getConv(PtrCurrFromNode P, char currfrom[], char currto[]);
 int getList(PtrBankNode BankHead, char currfrom[], char currto[], char bankname[]);
-bool cycle(PtrBankNode BankHead,char bankname[]);
-bool iscycle(PtrListNode P,bool visited[],bool stack[],PtrListNode AdjList[]);
+

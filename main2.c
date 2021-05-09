@@ -1,5 +1,23 @@
 #include "currency2.c"
 
+/************************************************************
+ *          TRADE BANK MANAGEMENT USER INTERFACE            *
+ *                         GROUP-4                          *
+ *                                                          *
+ *  MEMBERS                                                 *
+ *  1. Prerak Srivastava                                    *
+ *  2. KNV Karthikeya                                       *
+ *  3. Shubh Bhullar                                        *
+ *  4. Rohan Maddeini                                       *
+ *                                                          *
+ *                                                          *    
+ *                                                          *
+ *                                                          *
+ *                                                          *
+ * *********************************************************/
+
+//Uncomment lines 23,26 and 153 in this file for manually entering input
+
 int main()
 {
     printf("type 'commands' to see list of commands\n");

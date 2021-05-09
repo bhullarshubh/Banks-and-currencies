@@ -1,4 +1,5 @@
 #include "currency2.h"
+//uncomment lines 286,341,418,445,474,478,512 and comment the line 352 in this file to manually enter input
 
 PtrBankNode InitBankNode() //initializes a BankNode
 {
@@ -192,6 +193,89 @@ bool IsInPqueue(PtrPQueue PQueue, int n) // to check whether vertex n is priorit
     return false;
 }
 
+bool iscycle(PtrListNode P, bool visited[], bool stack[], PtrListNode AdjList[]) // recursive function to check if the nodes were visited before
+{
+    PtrListNode T = P;
+    if (visited[T->index] == false)
+    {
+        visited[T->index] = true;
+        stack[T->index] = true;
+        P = AdjList[P->index];
+        while (P->next != NULL)
+        {
+            P = P->next;
+            // printf("%d\n", P->index);
+            if (!visited[P->index] && iscycle(P, visited, stack, AdjList)) // recursively checking the iscycle function for vertices adjacent to the first one
+            {
+                //printf(" Go %d\n",P -> index);
+                return true;
+            }
+            else if (stack[P->index])
+            {
+                return true;
+            }
+        }
+    }
+    stack[T->index] = false; // equal to removing the element of the stack
+    return false;
+}
+
+bool cycle(PtrBankNode BankHead, char bankname[]) // finding the cycle using dfs
+{
+    PtrBankNode BankTrv = findBank(BankHead, bankname); // conversion of adjacency matrix to adjacency list same as the getList function
+    int n = BankTrv->currno;
+    char index[n][20];
+    PtrCurrFromNode TrvCurrFrom = BankTrv->Currhead;
+    int i = 0;
+    while (TrvCurrFrom->next != NULL)
+    {
+        TrvCurrFrom = TrvCurrFrom->next;
+        strcpy(index[i], TrvCurrFrom->currname);
+        i++;
+    }
+    PtrListNode AdjList[n];
+    for (int i = 0; i < n; i++)
+    {
+        AdjList[i] = InitListNode();
+        AdjList[i]->index = i;
+        PtrListNode TrvRow = AdjList[i];
+        for (int j = 0; j < n; j++)
+        {
+            int conv = getConv(BankTrv->Currhead, index[i], index[j]);
+            if (conv != 0)
+            {
+                PtrListNode P = InitListNode();
+                P->currconv = conv;
+                P->index = j;
+                TrvRow->next = P;
+                TrvRow = P;
+            }
+        }
+    }
+
+    bool visited[n]; //boolean array to store the visited nodes
+    bool stack[n];   // boolean stack to keep a track of elements in the stack once you've visited the nodes connecting the given node
+    for (int i = 0; i < n; i++)
+    {
+        visited[i] = false;
+        stack[i] = false;
+    }
+    // printf("hm %d\n",AdjList[0] -> index);
+    for (int i = 0; i < n; i++)
+    {
+        PtrListNode P = AdjList[i];
+        // printf("Hi %d\n", i);
+        if (iscycle(P, visited, stack, AdjList))
+        {
+            return true;
+        }
+        printf("\n");
+        // printf("%d\n",visited[i]);
+    }
+
+    return false;
+}
+
 void addBank(PtrBankNode BankHead, char bankname[]) //adds a BankNode to the link list of BankNodes
 {
     PtrBankNode BankTrv = findBank(BankHead, " ");
@@ -265,6 +349,7 @@ void printAllCurr(PtrBankNode BankHead, char bankname[]) //prints the adjacency 
 
     PtrCurrFromNode TrvCurrFrom = BankTrv->Currhead;
     printf("\t\t");
+    printf("\t");
     //Together these two while loops print the adjacency matrix
     while (TrvCurrFrom->next != NULL) //while loop to print the heading of each column
     {
@@ -648,84 +733,4 @@ int isEmpty(PtrPQueue pQueue) //to check if PQueue is empty or not
 {
     return pQueue->size == 0; // if size is 0 that means there are no minheap nodes in our priority queue.
 }
-bool iscycle(PtrListNode P, bool visited[], bool stack[], PtrListNode AdjList[]) // recursive function to check if the nodes were visited before
-{
-    PtrListNode T = P;
-    if (visited[T->index] == false)
-    {
-        visited[T->index] = true;
-        stack[T->index] = true;
-        P = AdjList[P->index];
-        while (P->next != NULL)
-        {
-            P = P->next;
-            // printf("%d\n", P->index);
-            if (!visited[P->index] && iscycle(P, visited, stack, AdjList)) // recursively checking the iscycle function for vertices adjacent to the first one
-            {
-                //printf(" Go %d\n",P -> index);
-                return true;
-            }
-            else if (stack[P->index])
-            {
-                return true;
-            }
-        }
-    }
-    stack[T->index] = false; // equal to removing the element of the stack
-    return false;
-}
-bool cycle(PtrBankNode BankHead, char bankname[]) // finding the cycle using dfs
-{
-    PtrBankNode BankTrv = findBank(BankHead, bankname); // conversion of adjacency matrix to adjacency list same as the getList function
-    int n = BankTrv->currno;
-    char index[n][20];
-    PtrCurrFromNode TrvCurrFrom = BankTrv->Currhead;
-    int i = 0;
-    while (TrvCurrFrom->next != NULL)
-    {
-        TrvCurrFrom = TrvCurrFrom->next;
-        strcpy(index[i], TrvCurrFrom->currname);
-        i++;
-    }
-    PtrListNode AdjList[n];
-    for (int i = 0; i < n; i++)
-    {
-        AdjList[i] = InitListNode();
-        AdjList[i]->index = i;
-        PtrListNode TrvRow = AdjList[i];
-        for (int j = 0; j < n; j++)
-        {
-            int conv = getConv(BankTrv->Currhead, index[i], index[j]);
-            if (conv != 0)
-            {
-                PtrListNode P = InitListNode();
-                P->currconv = conv;
-                P->index = j;
-                TrvRow->next = P;
-                TrvRow = P;
-            }
-        }
-    }
 
-    bool visited[n]; //boolean array to store the visited nodes
-    bool stack[n];   // boolean stack to keep a track of elements in the stack once you've visited the nodes connecting the given node
-    for (int i = 0; i < n; i++)
-    {
-        visited[i] = false;
-        stack[i] = false;
-    }
-    // printf("hm %d\n",AdjList[0] -> index);
-    for (int i = 0; i < n; i++)
-    {
-        PtrListNode P = AdjList[i];
-        // printf("Hi %d\n", i);
-        if (iscycle(P, visited, stack, AdjList))
-        {
-            return true;
-        }
-        printf("\n");
-        // printf("%d\n",visited[i]);
-    }
-
-    return false;
-}
