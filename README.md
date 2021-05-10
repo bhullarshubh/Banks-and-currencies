@@ -46,18 +46,21 @@ The edges are the conversions from currency X to currency Y.
 5. To get an understanding of how the the program works and the Input Output details please head over to the readme.md file.
 
 ### 1 : Manual Input 
-
-1. Uncomment the lines 286,341,418,445,474,478,512 in currency2.c.
-2. Uncomment the lines 23,26 and 153 in main2.c.
-3. Comment the line 352 in currency2.c
+1. Uncomment the lines 294,295,296,353,354,355,438,439,440,467,468,469,500,501,502,506,507,508,547,548,549 in currency2.c.
+2. Uncomment the lines 22,23,24,27,28,29 and 164,165,166  in main2.c.
+3. Comment the line 366 in currency2.c.
 4. You can run our program by running gcc main2.c followed by ./a.out in your terminal.
+5. The method to enter the input in inputprogram.c is as follows:
+6. Although this steps aren't required but the make your terminal look clean.
+
 
 ### 2 : Input through a program
-1. Comment the lines 286,341,418,445,474,478,512 in currency2.c.
-2. Comment the lines 23,26 and 153 in main2.c.
-3. Uncomment the line 352 in currency2.c.
+1. Comment the lines 294,295,296,353,354,355,438,439,440,467,468,469,500,501,502,506,507,508,547,548,549 in currency2.c.
+2. Comment the lines 22,23,24,27,28,29 and 164,165,166  in main2.c.
+3. Uncomment the line 366 in currency2.c.
 4. You can run the input program by running gcc inputprogram.c followed by ./a.out > Input2.c
 5. The method to enter the input in inputprogram.c is as follows:
+6. Although this steps aren't required but the make your terminal look clean.
     
     1. Enter the total number of banks (bankno).
     2. For the next bankno lines the ith line contains 2 integers 1st one represents the number of curriences in the ith bank and 2nd one represents the density index of the graph  
