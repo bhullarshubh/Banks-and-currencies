@@ -499,7 +499,7 @@ void delBank(PtrBankNode BankHead, char bankname[]) // deletes BankNode from lis
         BankTrvPrev = BankTrvPrev->next;
     }
     BankTrvPrev->next = BankTrv->next;
-    PtrCurrFromNode A = BankTrv->Currhead;
+    PtrCurrFromNode A = BankTrv->Currhead->next;
     PtrCurrFromNode P;
     while (A != NULL)
     {
@@ -712,6 +712,24 @@ int getList(PtrBankNode BankHead, char currfrom[], char currto[], char bankname[
             P = P->next;
         }
     }
+    PtrListNode f, j;
+
+    for (int i = 0; i < n; i++)
+    {
+        f = AdjList[i];
+        f = f->next;
+        while (f != NULL)
+        {
+            j = f->next;
+            free(f);
+            f = j;
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        free(AdjList[i]);
+    }
+
     return distance[dest];
 }
 
@@ -733,4 +751,3 @@ int isEmpty(PtrPQueue pQueue) //to check if PQueue is empty or not
 {
     return pQueue->size == 0; // if size is 0 that means there are no minheap nodes in our priority queue.
 }
-

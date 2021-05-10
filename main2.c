@@ -130,6 +130,7 @@ int main()
             printf("8. delConv currfrom currto bankname\n");
             printf("9. bestConv currfrom currto\n");
             printf("10. findCycle bankname\n\n");
+            printf("11. exit\n\n");
         }
         else if (strcmp(command, "findCycle") == 0)
         {
@@ -153,5 +154,6 @@ int main()
         printf("> ");
         scanf("%s", command);
     }
+    
     printf("\n");
 }
