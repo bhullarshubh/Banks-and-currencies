@@ -499,7 +499,7 @@ void delBank(PtrBankNode BankHead, char bankname[]) // deletes BankNode from lis
         BankTrvPrev = BankTrvPrev->next;
     }
     BankTrvPrev->next = BankTrv->next;
-    PtrCurrFromNode A = BankTrv->Currhead->next;
+    PtrCurrFromNode A = BankTrv->Currhead;
     PtrCurrFromNode P;
     while (A != NULL)
     {
