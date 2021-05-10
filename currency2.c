@@ -1,5 +1,5 @@
 #include "currency2.h"
-//uncomment lines 286,341,418,445,474,478,512 and comment the line 352 in this file to manually enter input
+
 
 PtrBankNode InitBankNode() //initializes a BankNode
 {
@@ -134,7 +134,9 @@ bool BankDoesntExist(PtrBankNode BankHead, char bankname[], int mode) //to check
 
     if (mode == 1)
     {
+        printf(RED);
         printf("\nBank %s does not exist\n\n", bankname);
+        printf(RESET);
     }
     return 1;
 }
@@ -146,7 +148,9 @@ bool NoBanksExist(PtrBankNode BankHead, int mode) //returns 0 if no banks exist,
     {
         if (mode == 1)
         {
+            printf(RED);
             printf("\nNo banks exist\n\n");
+            printf(RESET);
         }
         return 1;
     }
@@ -162,7 +166,9 @@ bool CurrencyAlreadyPresent(PtrCurrFromNode TrvCurrFrom, char currname[], int mo
         {
             if (mode == 1)
             {
+                printf(RED);
                 printf("\nError: Currency %s already exist\n\n", currname);
+                printf(RESET);
             }
             return 1;
         }
@@ -177,7 +183,9 @@ bool NoCurrencyExists(PtrBankNode BankHead, char bankname[], int mode) //returns
     {
         if (mode == 1)
         {
+            printf(RED);
             printf("\nError: No currencies exists in bank %s\n\n", bankname);
+            printf(RESET);
         }
         return 1;
     }
@@ -283,7 +291,9 @@ void addBank(PtrBankNode BankHead, char bankname[]) //adds a BankNode to the lin
     strcpy(Temp->bankname, bankname);
     BankTrv->next = Temp;
     Temp->next = NULL;
+    printf(GREEN);
     printf("\nAdded bank %s\n\n", bankname);
+    printf(RESET);
 }
 
 void printBanks(PtrBankNode BankHead) //prints list of BankNodes
@@ -292,7 +302,9 @@ void printBanks(PtrBankNode BankHead) //prints list of BankNodes
     PtrBankNode BankTrv = BankHead->next;
     while (BankTrv != NULL)
     {
+        printf(BOLD);
         printf("%s", BankTrv->bankname);
+        printf(RESET);
         if (BankTrv->next != NULL) // to prevent function from printing a comma after the last bank name has been printed
         {
             printf(", ");
@@ -338,7 +350,9 @@ void addCurr(PtrBankNode BankHead, char bankname[], char currname[]) // adds a C
         }
         addCurrToNode(NewCurr, currname);
         (BankTrv->currno)++;
+        printf(GREEN);
         printf("\nAdded currency %s to bank %s\n\n", currname, bankname);
+        printf(RESET);
     }
 }
 
@@ -349,12 +363,14 @@ void printAllCurr(PtrBankNode BankHead, char bankname[]) //prints the adjacency 
 
     PtrCurrFromNode TrvCurrFrom = BankTrv->Currhead;
     printf("\t\t");
-    printf("\t");
+    //printf("\t");
     //Together these two while loops print the adjacency matrix
     while (TrvCurrFrom->next != NULL) //while loop to print the heading of each column
     {
         TrvCurrFrom = TrvCurrFrom->next;
+        printf(GREEN);
         printf("%s\t\t", TrvCurrFrom->currname);
+        printf(RESET);
     }
 
     printf("\n\n");
@@ -363,7 +379,9 @@ void printAllCurr(PtrBankNode BankHead, char bankname[]) //prints the adjacency 
     {
         TrvCurrFrom = TrvCurrFrom->next;
         PtrCurrToNode TrailCurrFrom = TrvCurrFrom->FirstCurrTo;
+        printf(GREEN);
         printf("%s\t\t", TrvCurrFrom->currname);
+        printf(RESET);
         while (TrailCurrFrom != NULL)
         {
             printf("%.2f\t\t", TrailCurrFrom->currconv);
@@ -383,7 +401,9 @@ void delCurr(PtrBankNode BankHead, char currname[], char bankname[], int mode) /
     {
         if (mode == 1)
         {
+            printf(RED);
             printf("\nError: Currency %s does not exist in bank %s\n\n", currname, bankname);
+            printf(RESET);
         }
     }
     else
@@ -415,7 +435,9 @@ void delCurr(PtrBankNode BankHead, char currname[], char bankname[], int mode) /
             }
             BankTrv->Currhead->next = Temp2->next;
             free(Temp2); //deleting CurrFromNode from link list of CurrFromNodes
+            printf(GREEN);
             printf("\nDeleted currency %s from bank %s\n\n", currname, bankname);
+            printf(RESET);
         }
         else
         {
@@ -442,7 +464,9 @@ void delCurr(PtrBankNode BankHead, char currname[], char bankname[], int mode) /
                 free(Temp4);
             }
             free(Temp2); //deleting CurrFromNode from link list of CurrFromNodes
+            printf(GREEN);
             printf("\nDeleted currency %s from bank %s\n\n", currname, bankname);
+            printf(RESET);
         }
     }
 }
@@ -463,7 +487,9 @@ void addConv(PtrBankNode BankHead, char currfrom[], char currto[], float currcon
         {
             if (strcmp(currto, currfrom) == 0)
             {
+                printf(RED);
                 printf("\nError: Conversion between same currency not possible\n\n");
+                printf(RESET);
             }
             else
             {
@@ -471,22 +497,31 @@ void addConv(PtrBankNode BankHead, char currfrom[], char currto[], float currcon
                 findLoc(TrvCurrFrom, currfrom, currto, currconv);
                 if (mode == 1)
                 {
+                    printf(GREEN);
                     printf("\nAdded conversion %s to %s to bank %s\n\n", currfrom, currto, bankname);
+                    printf(RESET);
                 }
                 else
                 {
+                    printf(GREEN);
                     printf("\nDeleted conversion %s to %s in bank %s\n\n", currto, currfrom, bankname);
+                    printf(RESET);
                 }
+
             }
         }
         else
         {
+            printf(RED);
             printf("\nError: Currency %s does not exist in %s\n\n", currto, bankname);
+            printf(GREEN);
         }
     }
     else
     {
+        printf(RED);
         printf("\nError: Currency %s does not exist in %s\n\n", currfrom, bankname);
+        printf(GREEN);
     }
 }
 
@@ -499,7 +534,7 @@ void delBank(PtrBankNode BankHead, char bankname[]) // deletes BankNode from lis
         BankTrvPrev = BankTrvPrev->next;
     }
     BankTrvPrev->next = BankTrv->next;
-    PtrCurrFromNode A = BankTrv->Currhead;
+    PtrCurrFromNode A = BankTrv->Currhead->next;
     PtrCurrFromNode P;
     while (A != NULL)
     {
@@ -509,7 +544,9 @@ void delBank(PtrBankNode BankHead, char bankname[]) // deletes BankNode from lis
     }
     free(BankTrv->Currhead);
     free(BankTrv);
+    printf(GREEN);
     printf("\nDeleted bank %s\n\n", bankname);
+    printf(RESET);
 }
 
 void swapMinHeapNode(PtrPtrPQueueNode a, PtrPtrPQueueNode b) //swap 2 pqueue nodes,would be required as during heapify swapping is must
@@ -586,18 +623,24 @@ void bestConv(PtrBankNode BankHead, char currfrom[], char currto[])
     }
     if (error == 1)
     {
+        printf(RED);
         printf("\nError: No bank with conversion from %s to %s exists\n\n", currfrom, currto);
+        printf(RESET);
     }
     else
     {
         qsort(bank, bankno, sizeof(store), cmpfunc);
         if (bank[0].cost == max)
         {
+            printf(RED);
             printf("\nError: No bank with conversion from %s to %s exists\n\n", currfrom, currto);
+            printf(RESET);
         }
         else
         {
+            printf(GREEN);
             printf("\nThe best conversion rate from %s to %s exists in bank %s with conversion rate %d\n\n", currfrom, currto, bank[0].bankname, bank[0].cost);
+            printf(RESET);
         }
     }
 }
@@ -663,7 +706,9 @@ int getList(PtrBankNode BankHead, char currfrom[], char currto[], char bankname[
     }
     for (int i = 0; i < n; i++)
     {
+        printf(BOLD);
         printf("%d -> ", AdjList[i]->index);
+        printf(RESET);
         PtrListNode TrvRow = AdjList[i];
         while (TrvRow->next != NULL)
         {

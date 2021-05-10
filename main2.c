@@ -16,14 +16,17 @@
  *                                                          *
  * *********************************************************/
 
-//Uncomment lines 23,26 and 153 in this file for manually entering input
 
 int main()
 {
+    printf(YELLOW);
     printf("type 'commands' to see list of commands\n");
+    printf(RESET);
     PtrBankNode BankHead = InitBankNode();
     char command[20];
+    printf(PURPLE);
     printf("> ");
+    printf(RESET);
     scanf("%s", command);
     while (strcmp(command, "exit") != 0)
     {
@@ -33,7 +36,9 @@ int main()
             scanf("%s", bankname);
             if (!BankDoesntExist(BankHead, bankname, 0))
             {
+                printf(RED);
                 printf("\nError: Bank %s already exist\n\n", bankname);
+                printf(RESET);
             }
             else
             {
@@ -120,6 +125,7 @@ int main()
         }
         else if (strcmp(command, "commands") == 0)
         {
+            printf(YELLOW);
             printf("\n1. addBank bankname\n");
             printf("2. printBank\n");
             printf("3. delBank bankname\n");
@@ -131,6 +137,7 @@ int main()
             printf("9. bestConv currfrom currto\n");
             printf("10. findCycle bankname\n\n");
             printf("11. exit\n\n");
+            printf(RESET);
         }
         else if (strcmp(command, "findCycle") == 0)
         {
@@ -139,19 +146,24 @@ int main()
             PtrBankNode BankTrv = BankHead->next;
             if (cycle(BankTrv, bankname) == true)
             {
+                printf(GREEN);
                 printf("\nA cycle between the currencies exists in bank %s\n", bankname);
+                printf(RESET);
             }
             else
             {
-                printf("\nNo cycles exist in bank %s\n", bankname);
+                printf(RED);
+                printf("\nError: No cycles exist in bank %s\n", bankname);
+                printf(RESET);
             }
         }
         else
         {
             printf("Syntax Error\n");
         }
-       
+        printf(PURPLE);
         printf("> ");
+        printf(RESET);
         scanf("%s", command);
     }
     
